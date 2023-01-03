@@ -1,1 +1,25 @@
 @import 'bootstrap/scss/bootstrap';
+
+#App {
+    min-height: 100vh;
+    margin: auto;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid rgb(131, 130, 130);
+    border-radius: 0;
+
+    &:focus {
+        box-shadow: none;
+        border-color:white;
+        border-bottom: 1px solid rgb(0, 0, 0);
+    }
+}
+
+.profile-image {
+    margin-bottom: 20px;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
