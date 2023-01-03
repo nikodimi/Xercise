@@ -1,9 +1,17 @@
-import React from 'react'
+import { useAuthContext } from '../contexts/AuthContext'
 
 const StartPage = () => {
-  return (
-    <div>StartPage</div>
-  )
+    const { currentUser } = useAuthContext()
+
+    return (
+        <div>Hi!
+
+            {currentUser 
+                ? <p> {currentUser.email}</p>
+                : <p> Who are you?</p>    
+            }
+        </div>
+    )
 }
 
 export default StartPage

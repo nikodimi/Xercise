@@ -1,6 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import './assets/scss/App.scss'
 import StartPage from './pages/StartPage'
+import SignupPage from './pages/SignupPage'
+import LoginPage from './pages/LoginPage'
+import LogoutPage from './pages/LogoutPage'
+import './assets/scss/App.scss'
 
 const App = () => {
     return (
@@ -8,6 +11,9 @@ const App = () => {
 
             <Routes>
                 <Route path="/" element={<StartPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/logout" element={<LogoutPage />} />
             </Routes>
 
         </div>
