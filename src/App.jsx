@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
 import ProfilePage from './pages/ProfilePage'
 import './assets/scss/App.scss'
+import RequireAuth from './components/RequireAuth'
 
 const App = () => {
     return (
@@ -15,7 +16,11 @@ const App = () => {
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/logout" element={<LogoutPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={
+                    <RequireAuth>
+                        <ProfilePage />
+                    </RequireAuth>
+                } />
             </Routes>
 
         </div>
