@@ -4,12 +4,14 @@ import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
 import ProfilePage from './pages/ProfilePage'
-import './assets/scss/App.scss'
+import Navigation from './components/Navigation'
 import RequireAuth from './components/RequireAuth'
+import './assets/scss/App.scss'
 
 const App = () => {
     return (
         <div id="App">
+            <Navigation />
 
             <Routes>
                 <Route path="/" element={<StartPage />} />

@@ -1,8 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'navigation';
 
 #App {
     min-height: 100vh;
     margin: auto;
+    width: 95%;
 }
 
 .form-control {
