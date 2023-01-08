@@ -7,6 +7,7 @@ import LogoutPage from './pages/LogoutPage'
 import ProfilePage from './pages/ProfilePage'
 import Navigation from './components/Navigation'
 import RequireAuth from './components/RequireAuth'
+import ExercisesPage from './pages/ExercisesPage'
 import './assets/scss/App.scss'
 
 const App = () => {
@@ -22,6 +23,11 @@ const App = () => {
                 <Route path="/profile" element={
                     <RequireAuth>
                         <ProfilePage />
+                    </RequireAuth>
+                } />
+                <Route path="/exercises" element={
+                    <RequireAuth>
+                        <ExercisesPage />
                     </RequireAuth>
                 } />
             </Routes>

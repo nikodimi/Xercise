@@ -10,7 +10,7 @@ const tabs = [
         icon: faUser
     },
     {
-        route: "/signup",
+        route: "/exercises",
         icon: faDumbbell
     },
     {
