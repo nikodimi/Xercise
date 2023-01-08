@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import StartPage from './pages/StartPage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
@@ -24,6 +25,8 @@ const App = () => {
                     </RequireAuth>
                 } />
             </Routes>
+
+            <ReactQueryDevtools position='bottom-left' />
 
         </div>
     )
