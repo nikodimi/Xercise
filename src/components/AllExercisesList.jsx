@@ -6,6 +6,7 @@ const AllExercisesList = ({ data }) => {
         id: ""
     })
 
+    let id = searchParams.get('id')
     const handleClick = (value, category) => {
         setSearchParams({
             muscleGroup: category,
@@ -27,6 +28,8 @@ const AllExercisesList = ({ data }) => {
                     ))}
                 </div>
             )}
+
+            {data && id && (<SingleExercise id={id}/>)}
         </>
     )
 }

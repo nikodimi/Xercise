@@ -1,5 +1,6 @@
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import { useSearchParams } from "react-router-dom"
+import SingleExercise from "./SingleExercise"
 
 const ExerciseByMuscleList = ({ muscle }) => {
     const [searchParams, setSearchParams] = useSearchParams({
@@ -7,6 +8,7 @@ const ExerciseByMuscleList = ({ muscle }) => {
         id: ""
     })
 
+    let id = searchParams.get('id')
     const {data, isLoading} = useGetExercisesByMuscle(muscle)
 
     const handleClick = (value) => {
@@ -20,7 +22,7 @@ const ExerciseByMuscleList = ({ muscle }) => {
         <>
             {isLoading && !data && (<p>Loading data...</p>)}
 
-            {data && (
+            {data && !id && (
                 <div>
                     {data.map(exercise => (
                         <div key={exercise.id} className="exercise-item" onClick={() => handleClick(exercise.id)}>
@@ -30,6 +32,8 @@ const ExerciseByMuscleList = ({ muscle }) => {
                     ))}
                 </div>
             )}
+
+            {data && id && (<SingleExercise id={id}/>)}
         </>
     )
 }
