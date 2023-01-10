@@ -1,8 +1,8 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button} from 'react-bootstrap'
 import { useSearchParams } from "react-router-dom"
-import useGetExercises from "../hooks/useGetExercises"
 import ExerciseByMuscleList from "../components/ExerciseByMuscleList"
 import AllExercisesList from "../components/AllExercisesList"
+import useGetMuscles from '../hooks/useGetMuscles'
 
 const ExercisesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams({
@@ -10,34 +10,33 @@ const ExercisesPage = () => {
     })
 
     const muscleGroup = searchParams.get('muscleGroup')
-    const {data, isLoading} = useGetExercises()
+    const {data, isLoading} = useGetMuscles()
 
-    const handleClick = (e) => {
-        const value = e.target.value
+    const handleClick = (value) => {
         setSearchParams({
             muscleGroup: value
         })
     }
-
+    
     return (
+
         <Container>
-            <Row>
-                <Col xs={4}>
-                    <Button value="legs" onClick={handleClick}>Legs</Button>
-                </Col>
-                <Col xs={4}>
-                    <Button value="chest" onClick={handleClick}>Chest</Button>
-                </Col>
-                <Col xs={4}>
-                    <Button value="arms" onClick={handleClick}>Arms</Button>
-                </Col>
-            </Row>
 
             {isLoading && !data && (<p>Loading data...</p>)} 
 
-            {data && !muscleGroup && <AllExercisesList data={data} /> }
+            {!isLoading && data && (
+                <Row className="scrollbar">
+                    {data.map(exercise => (
+                        <Col xs={4} className="scrollbar-item" key={exercise.id} onClick={() => handleClick(exercise.name)}>
+                            <h5 value={exercise.name} >{exercise.name}</h5>
+                        </Col>
+                    ))}
+                </Row>
+            )}
 
-            {data && muscleGroup && <ExerciseByMuscleList muscle={muscleGroup} />}
+            {!muscleGroup && <AllExercisesList /> }
+
+            {muscleGroup && <ExerciseByMuscleList muscle={muscleGroup} />}
 
         </Container>
 

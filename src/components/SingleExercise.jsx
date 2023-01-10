@@ -1,8 +1,8 @@
 import { Col, Container, Row } from "react-bootstrap"
 import useGetExercise from "../hooks/useGetExercise"
 
-const SingleExercise = ({ id }) => {
-    const { data, isLoading } = useGetExercise(id)
+const SingleExercise = ({ muscle, id }) => {
+    const { data, isLoading } = useGetExercise(muscle, id)
 
     return (
         <Container>

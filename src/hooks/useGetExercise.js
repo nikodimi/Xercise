@@ -1,8 +1,8 @@
 // import useGetCollection from "./useGetCollection";
 import useGetDocument from "./useGetDocument";
 
-const useGetExercise = (id) => {
-    return useGetDocument('exercises', id)
+const useGetExercise = (muscle, id) => {
+    return useGetDocument(`muscles/${muscle}/exercises`, id)
 }
 
 export default useGetExercise

@@ -25,3 +25,11 @@
     width: 150px;
     object-fit: cover;
 }
+
+.scrollbar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+}
+.scrollbar::-webkit-scrollbar{
+    width: 0;
+}

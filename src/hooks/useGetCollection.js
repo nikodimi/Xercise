@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/index";
 
 const useGetCollection = (col, muscleGroup) => {
@@ -7,10 +7,10 @@ const useGetCollection = (col, muscleGroup) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const ref = collection(db, col);
-        let queryRef = query(ref, where( 'category', '==', muscleGroup ) )
+        const ref = collection(db, `${col}/${muscleGroup}/exercises`);
+        // let queryRef = query(ref, where( 'category', '==', muscleGroup ) )
 
-        const unsubscribe = onSnapshot(queryRef, (snapshot) => {
+        const unsubscribe = onSnapshot(ref, (snapshot) => {
             const docs = snapshot.docs.map((doc) => {
                 return {
                     id: doc.id,

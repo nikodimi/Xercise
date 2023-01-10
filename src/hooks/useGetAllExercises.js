@@ -1,11 +1,11 @@
 import { db } from '../firebase'
-import { collection, query } from 'firebase/firestore'
+import { collectionGroup, query } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 
-const useGetExercises = () => {
+const useGetAllExercises = () => {
     // Get reference of collection 'exercises'
     const queryRef = query(
-		collection(db, 'exercises')
+		collectionGroup(db, 'exercises')
 	)
 
 	const exercisesQuery = useFirestoreQueryData(['all-exercises'], queryRef, {
@@ -16,4 +16,4 @@ const useGetExercises = () => {
     return exercisesQuery
 }
 
-export default useGetExercises
+export default useGetAllExercises

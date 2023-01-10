@@ -18,6 +18,8 @@ const ExerciseByMuscleList = ({ muscle }) => {
         })
     }
 
+    console.log('data', data)
+
     return (
         <>
             {isLoading && !data && (<p>Loading data...</p>)}
@@ -33,7 +35,7 @@ const ExerciseByMuscleList = ({ muscle }) => {
                 </div>
             )}
 
-            {data && id && (<SingleExercise id={id}/>)}
+            {data && id && (<SingleExercise muscle={muscle} id={id} />)}
         </>
     )
 }
