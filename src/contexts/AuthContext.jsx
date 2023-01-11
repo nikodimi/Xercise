@@ -34,7 +34,8 @@ const AuthContextProvider = ({ children }) => {
         await setDoc(doc(db, "users", auth.currentUser.uid), {
              email,
              name,
-             photoURL: auth.currentUser.photoURL
+             photoURL: auth.currentUser.photoURL,
+             myWorkOuts: []
         })
 	}
 
