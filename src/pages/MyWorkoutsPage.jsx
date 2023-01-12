@@ -1,12 +1,10 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Accordion } from 'react-bootstrap'
 import { useAuthContext } from '../contexts/AuthContext'
 import useGetUserWorkouts from '../hooks/useGetUserWorkouts'
 
 const MyWorkoutsPage = () => {
     const { currentUser } = useAuthContext()
-    console.log('currentUser.id', currentUser.uid)
     const {data, isLoading} = useGetUserWorkouts(currentUser.uid)
-    console.log('data', data)
 
     return (
 
@@ -16,16 +14,22 @@ const MyWorkoutsPage = () => {
 
             {!isLoading && data && (
                 <Row>
-                    {data.map(workout => (
-                        <Col xs={12} key={workout.id}>
-                            <div>
-                                <h5>{workout.title}</h5>
-                                {/* {workout.exercises.map(exercise => (
-                                    <h5 key={exercise.name}>{exercise.name}</h5>
-                                ))} */}
-                            </div>
-                        </Col>
-                    ))}
+                    <h5 className='mt-5'>
+                        My Exercises
+                    </h5>
+
+                    <Accordion className="mt-2">
+                        {data.map((workout, i) => (
+                            <Col xs={12} key={workout.id}>
+                                <Accordion.Item eventKey={data[i]} className="item my-2">
+                                    <Accordion.Header>{workout.title}</Accordion.Header>
+                                    {workout.exercises.map(exercise => (
+                                    <Accordion.Body key={exercise.name}>{exercise.name}</Accordion.Body>
+                                    ))}
+                                </Accordion.Item>
+                            </Col>
+                        ))}
+                    </Accordion>
                 </Row>
             )}
 
