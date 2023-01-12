@@ -1,13 +1,8 @@
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import SingleExercise from "./SingleExercise"
 import { useSearchParams } from "react-router-dom"
-import { db } from '../firebase'
-import { addDoc, collection } from 'firebase/firestore'
-import { useAuthContext } from '../contexts/AuthContext'
-import { Button } from 'react-bootstrap'
 
 const ExerciseByMuscleList = ({ muscle }) => {
-    const { currentUser } = useAuthContext()
     const [searchParams, setSearchParams] = useSearchParams({
         muscleGroup: muscle,
         id: ""
@@ -22,16 +17,6 @@ const ExerciseByMuscleList = ({ muscle }) => {
             id: id
         })
     }
-    
-    const addToWorkout = async(exerciseObj) => {
-        await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
-            title: "",
-            time: "",
-            exercises: [
-                exerciseObj
-            ]
-       })
-    }
 
     return (
         <>
@@ -40,9 +25,8 @@ const ExerciseByMuscleList = ({ muscle }) => {
             {data && !id && (
                 <div>
                     {data.map(exercise => (
-                        <div key={exercise.id} className="exercise-item" onClick={() => handleClick(exercise.id)}>
-                            <h5>{exercise.name}</h5>
-                            <Button onClick={() => addToWorkout(exercise)}>add to subcollection</Button>
+                        <div key={exercise.id} className="exercise-item d-flex justify-content-between my-3">
+                            <h5 onClick={() => handleClick(exercise.id)}>{exercise.name}</h5>
                         </div>
                     ))}
                 </div>
