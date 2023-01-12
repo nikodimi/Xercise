@@ -6,8 +6,8 @@ import { faDumbbell, faUser, faCalendarDays, faBookmark } from '@fortawesome/fre
 
 const tabs = [
     {
-        route: "/profile",
-        icon: faUser
+        route: "/myworkouts",
+        icon: faBookmark
     },
     {
         route: "/exercises",
@@ -18,8 +18,8 @@ const tabs = [
         icon: faCalendarDays
     },
     {
-        route: "/",
-        icon: faBookmark
+        route: "/profile",
+        icon: faUser
     }
 ]
 
