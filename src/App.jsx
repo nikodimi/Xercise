@@ -8,7 +8,7 @@ import LoginPage from './pages/LoginPage'
 import LogoutPage from './pages/LogoutPage'
 import ProfilePage from './pages/ProfilePage'
 import ExercisesPage from './pages/ExercisesPage'
-import MyWorkoutsPage from './pages/MyWorkoutsPage'
+import WorkoutsPage from './pages/WorkoutsPage'
 import './assets/scss/App.scss'
 
 const App = () => {
@@ -21,9 +21,9 @@ const App = () => {
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/logout" element={<LogoutPage />} />
-                <Route path="/myworkouts" element={
+                <Route path="/workouts" element={
                     <RequireAuth>
-                        <MyWorkoutsPage />
+                        <WorkoutsPage />
                     </RequireAuth>
                 } />
                 <Route path="/profile" element={

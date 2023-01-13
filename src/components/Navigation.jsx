@@ -6,7 +6,7 @@ import { faDumbbell, faUser, faCalendarDays, faBookmark } from '@fortawesome/fre
 
 const tabs = [
     {
-        route: "/myworkouts",
+        route: "/workouts",
         icon: faBookmark
     },
     {
