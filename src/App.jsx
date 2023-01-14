@@ -9,6 +9,7 @@ import LogoutPage from './pages/LogoutPage'
 import ProfilePage from './pages/ProfilePage'
 import ExercisesPage from './pages/ExercisesPage'
 import WorkoutsPage from './pages/WorkoutsPage'
+import WorkoutPage from './pages/WorkoutPage'
 import './assets/scss/App.scss'
 
 const App = () => {
@@ -24,6 +25,11 @@ const App = () => {
                 <Route path="/workouts" element={
                     <RequireAuth>
                         <WorkoutsPage />
+                    </RequireAuth>
+                } />
+                <Route path="/workouts/:id" element={
+                    <RequireAuth>
+                        <WorkoutPage />
                     </RequireAuth>
                 } />
                 <Route path="/profile" element={
