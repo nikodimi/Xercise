@@ -1,14 +1,22 @@
-import { Col, Row, Button } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import { useWorkoutStore } from "../store"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import useGetExercise from "../hooks/useGetExercise"
 
 const SingleExercise = ({ muscle, id }) => {
-    const { addToWorkout } = useWorkoutStore()
+    const { addToWorkout, removeFromWorkout, exercises } = useWorkoutStore()
     const { data, isLoading } = useGetExercise(muscle, id)
 
     const addExerciseToWorkout = (exercise) => {
         addToWorkout(exercise)
     }
+
+    const removeExerciseFromWorkout = (exercise) => {
+        removeFromWorkout(exercise)
+    }
+
+    const exists = exercises.some(e => e.name === data.name)
 
     return (
         <Row>
@@ -16,15 +24,24 @@ const SingleExercise = ({ muscle, id }) => {
                 {isLoading && !data && (<p>Loading...</p>)}
 
                 {!isLoading && data &&(
-                    <div>
-                        <p>{data.name}</p>
-                        <p>{data.category}</p>
-                        <p>{data.description}</p>
-                        <p>{data.link}</p>
-                        <p>{data.sets}</p>
-                        <p>{data.reps}</p>
-                        <p>{data.kg}</p>
-                        <Button className="me-2" onClick={() => addExerciseToWorkout(data)}>add</Button>
+                    <div className="mt-3">
+                        <div className="d-flex justify-content-between">
+                            <h5>{data.name}</h5>
+                            {exists? (
+                                <FontAwesomeIcon 
+                                    size="lg" 
+                                    icon={faMinus} 
+                                    onClick={() => removeExerciseFromWorkout(data)}
+                                />
+                            ) : (
+                                <FontAwesomeIcon 
+                                    size="lg" 
+                                    icon={faPlus} 
+                                    onClick={() => addExerciseToWorkout(data)}
+                                />
+                            )
+                        }
+                        </div>
                     </div>
                 )}                
             </Col>
