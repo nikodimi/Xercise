@@ -53,15 +53,16 @@ const ExercisesPage = () => {
 
             {muscleGroup && <ExerciseByMuscleList muscle={muscleGroup} />}
 
-            <Row>
-                <Col>
-                    <div>
-                        {exercises.length >= 1 && (
-                            <Button className="save-btn my-5 w-100" onClick={() => addToWorkouts(exercises)}>Add to Workout({exercises.length})</Button>
-                        )}
-                    </div>
-                </Col>
-            </Row>
+            {exercises.length >= 1 && (
+                <Row>
+                    <Col>
+                        <div className='d-flex justify-content-between my-3'>
+                            <Button className="save-btn w-100" onClick={() => addToWorkouts(exercises)}>Add to Workout({exercises.length})</Button>
+                            <Button className="reset-btn w-100 ms-3" variant="danger" onClick={() => resetWorkout()}>Reset Workout</Button>
+                        </div>
+                    </Col>
+                </Row>
+            )}
 
         </Container>
 
