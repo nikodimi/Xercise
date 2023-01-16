@@ -1,22 +1,15 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'variables';
+@import 'globals';
 @import 'navigation';
+@import 'login';
+@import 'signup';
 
 #App {
     min-height: 100vh;
-    margin: auto;
-    width: 95%;
-}
-
-.form-control {
-    border: none;
-    border-bottom: 1px solid rgb(131, 130, 130);
-    border-radius: 0;
-
-    &:focus {
-        box-shadow: none;
-        border-color:white;
-        border-bottom: 1px solid rgb(0, 0, 0);
-    }
+    background-color: $primary;
+    color: $font-color;
+    padding: 0.5rem;
 }
 
 .profile-image {

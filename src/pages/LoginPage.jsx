@@ -2,6 +2,8 @@ import { useRef, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LoginPage = () => {
     const emailRef = useRef()
@@ -26,26 +28,33 @@ const LoginPage = () => {
 }
 
     return (
-        <Container className='d-flex flex-column justify-content-center flex-grow-1'>
+        <Container className='d-flex flex-column justify-content-center login-container'>
             <Row>
                 <Col md={6} className='m-auto'>
                     <div className="login-wrapper">
-                        <h5 className='mb-4'>Log in</h5>
-                        
+            
                         {error && (<Alert variant='danger'>{error}</Alert>)}
 
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" ref={emailRef} required />
+                            <Form.Group className='d-flex align-items-center form-group'>
+                                <Form.Control type="email" placeholder="Email" ref={emailRef} required />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faUser}
+                                    className="form-icon" 
+                                />
                             </Form.Group>
 
-                            <Form.Group className='my-3'>
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" ref={passwordRef} required />
+                            <Form.Group className='d-flex align-items-center mt-3 form-group'>
+                                <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faLock}
+                                    className="form-icon" 
+                                />
                             </Form.Group>
 
-                            <Button className="text-center" disabled={loading} type="submit">Log in</Button>
+                            <Button className="login-btn w-100 mt-4" disabled={loading} type="submit">Log in</Button>
                         </Form>
                         
                     </div>

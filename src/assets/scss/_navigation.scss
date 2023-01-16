@@ -1,22 +1,23 @@
 
 .navigation-tabs {
+
     position: fixed;
     bottom: 1.25rem;
     right:0;
     left: 0;
     z-index: 999;
-    
+
     .navbar {
-        background-color: rgb(27, 27, 27);
+        background-color: $font-color;
         border-bottom: solid 1px #EBEBEB;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         border-radius: 0.75rem;
     
         .nav-link {
-            color: #ffffff;
-    
+            color: black;
+
             &.active {
-                color: #2c924e;
+                color: $primary;
             }
         }
     }

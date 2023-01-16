@@ -35,7 +35,7 @@ const Navigation = () => {
                                     <NavItem key={`tab-${index}`}>
                                         <NavLink to={tab.route} className="nav-link" activeclassname="active">
                                             <div>
-                                                <FontAwesomeIcon size="lg" icon={tab.icon}/>
+                                                <FontAwesomeIcon size="xl" icon={tab.icon}/>
                                             </div>
                                         </NavLink>
                                     </NavItem>

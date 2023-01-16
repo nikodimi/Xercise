@@ -1,0 +1,36 @@
+.login-container {
+    min-height: 90vh;
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-control {
+        border: none;
+        background-color: $secondary;
+        border-bottom: none;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+
+        &:focus {
+            box-shadow: none;
+        }
+        
+        &::placeholder {
+            color: $font-color;
+        }
+    }
+
+    .form-icon {
+        position: absolute;
+        right: 5%;
+    }
+
+    .login-btn {
+        background-color: $primary;
+        border: 0.25rem solid $secondary;
+        border-radius: 5rem;
+        // border: none;
+        padding: 0.75rem 0;
+    }
+}

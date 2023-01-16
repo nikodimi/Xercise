@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from "../contexts/AuthContext";
+import { faUser, faEnvelope, faLock, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SignupPage = () => {
     const emailRef = useRef();
@@ -49,28 +51,34 @@ const SignupPage = () => {
     };
 
     return (
-        <Container>
+        <Container className="d-flex flex-column justify-content-center signup-container">
             <Row>
                 <Col md={6} className='m-auto'>
                     <div className="signup-wrapper">
-                        <h5 className='mb-4'>Sign up</h5>
                         
                         {error && (<Alert variant='danger'>{error}</Alert>)}
 
                         <Form onSubmit={handleSubmit}>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" ref={displayNameRef} required />
+                            <Form.Group className='d-flex align-items-center form-group'>
+                                <Form.Control type="text" placeholder="Username" ref={displayNameRef} required />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faUser}
+                                    className="form-icon" 
+                                />
                             </Form.Group>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" ref={emailRef} required />
+                            <Form.Group className='d-flex align-items-center form-group mt-3'>
+                                <Form.Control type="email" placeholder="Email" ref={emailRef} required />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faEnvelope}
+                                    className="form-icon" 
+                                />
                             </Form.Group>
 
-                            <Form.Group id="photo" className="mb-3">
-                                <Form.Label>Photo</Form.Label>
+                            <Form.Group id="photo" className="mt-3">
                                 <Form.Control type="file" onChange={handleFileChange} />
                                 <Form.Text>
                                     {photo
@@ -79,26 +87,35 @@ const SignupPage = () => {
                                 </Form.Text>
                             </Form.Group>
 
-                            <Form.Group className='my-3'>
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" ref={passwordRef} required />
-                            </Form.Group>
-
-                            <Form.Group id="password-confirm" className="mb-3">
-                                <Form.Label>Confirm</Form.Label>
-                                <Form.Control
-                                    type="password"
-                                    ref={passwordConfirmRef}
-                                    required
+                            <Form.Group className='d-flex align-items-center form-group mt-3'>
+                                <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faLock}
+                                    className="form-icon" 
                                 />
                             </Form.Group>
 
-                            <div className="d-flex">
+                            <Form.Group id="password-confirm"  className='d-flex align-items-center form-group mt-3'>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Confirm"
+                                    ref={passwordConfirmRef}
+                                    required
+                                />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faCheck}
+                                    className="form-icon" 
+                                />
+                            </Form.Group>
+
+                            <div className="d-flex mt-2">
                                 <p>Already have an account?</p>
-                                <Link className="ms-2" to="/login">Login here</Link>
+                                <Link className="ms-2 login-link" to="/login">Login here</Link>
                             </div> 
 
-                            <Button className="text-center" disabled={loading} type="submit">Sign up</Button>
+                            <Button className="signup-btn w-100 mt-4" disabled={loading} type="submit">Sign up</Button>
                         </Form>
                         
                     </div>
