@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage'
 import WorkoutsPage from './pages/WorkoutsPage'
 import WorkoutPage from './pages/WorkoutPage'
 import MusclesPage from './pages/MusclesPage'
+import MusclePage from './pages/MusclePage'
 import './assets/scss/App.scss'
 
 const App = () => {
@@ -35,6 +36,11 @@ const App = () => {
                 <Route path="/muscles" element={
                     <RequireAuth>
                         <MusclesPage />
+                    </RequireAuth>
+                } />
+                <Route path="/muscles/:id" element={
+                    <RequireAuth>
+                        <MusclePage />
                     </RequireAuth>
                 } />
                 <Route path="/profile" element={
