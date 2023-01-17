@@ -1,0 +1,41 @@
+
+.create-wrapper {
+    border: 0.125rem solid $secondary;
+    border-radius: 0.5rem;
+}
+
+.nav-tabs {
+    width: 100%;
+    border-color: $primary;
+
+    .nav-item {
+        background-color: $primary;
+        width: 50%;
+
+        .nav-link {
+            border: 1px solid $secondary ;
+            color: grey;
+            width: 100%;
+        }
+
+        .nav-link.active {
+            background-color: $primary;
+            color: $font-color;
+            border-top: 1px solid $secondary;
+            border-left: 1px solid $secondary;
+            border-right: 1px solid $secondary;
+            border-bottom: none;
+            width: 100%;
+        }
+    }
+}
+
+.workout-box {
+    padding: 0.75rem;
+    background-color: $secondary;
+    cursor: pointer;
+
+    &:hover {
+        color: $font-color;
+    }
+}

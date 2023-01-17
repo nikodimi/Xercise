@@ -4,6 +4,7 @@
 @import 'navigation';
 @import 'login';
 @import 'signup';
+@import 'workoutspage';
 
 #App {
     min-height: 100vh;
@@ -26,3 +27,21 @@
 .scrollbar::-webkit-scrollbar{
     width: 0;
 }
+
+.form-control:focus {
+    color: white;
+
+
+    // &::placeholder {
+    //     color: transparent;
+    // }
+}
+
+// .form-control:focus::-webkit-input-placeholder {
+//     color: transparent;
+//   }
+   
+//   .form-control::focus:-ms-input-placeholder {
+//     color: transparent;
+//   }
+
