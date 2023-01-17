@@ -1,7 +1,7 @@
-import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap'
+import { Container, Row, Col, Tabs, Tab, Button } from 'react-bootstrap'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuthContext } from '../contexts/AuthContext'
 import { deleteDoc, doc } from '@firebase/firestore';
@@ -23,6 +23,13 @@ const WorkoutsPage = () => {
         <Container>
             <Row>
                 <Col xs={12}>
+                    <Link to={`/exercises`}>
+                        <div className='create-wrapper d-flex justify-content-center align-center py-3 my-5'>
+                            <h5>CREATE NEW WORKOUT</h5>
+                            <FontAwesomeIcon className="ms-3" size="xl" icon={faPlus} />
+                        </div>
+                    </Link>
+
                     <Tabs
                         defaultActiveKey="my workouts"
                         id="uncontrolled-tab-example"
@@ -34,17 +41,19 @@ const WorkoutsPage = () => {
                         
                         {!isLoading && data && (
 
-                            <div className='text-end'>
-                                <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
+                            <div>
                                 {data.filter(d => d.premade != "yes").map(workout => (
                                     <div key={workout.id} className="d-flex justify-content-between workout-box mt-2">
-                                        <Link to={`/workouts/${workout.id}`}><h5>{workout.title}</h5></Link>
-                                        <p>{workout.exercises.length} exercises</p>
+                                        <Link className="w-50" to={`/workouts/${workout.id}`}><p>{workout.title}</p></Link>
+                                        <p className='w-40'>{workout.exercises.length} exercises</p>
                                         {edit && (
-                                            <FontAwesomeIcon size="lg" icon={faTrash} onClick={() => deleteWorkout(workout)}/>
+                                            <FontAwesomeIcon className="w-10" size="lg" icon={faTrash} onClick={() => deleteWorkout(workout)}/>
                                         )}
                                     </div>
                                 ))}
+                                <div className="mt-3 w-100 text-end pe-1">
+                                    <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
+                                </div>
                             </div>
                         )}
                         </Tab>
@@ -57,7 +66,7 @@ const WorkoutsPage = () => {
                             <div>
                                 {data.filter(d => d.premade == "yes").map(workout => (
                                     <div key={workout.id} className="d-flex justify-content-between workout-box mt-2">
-                                        <Link to={`/workouts/${workout.id}`}><h5>{workout.title}</h5></Link>
+                                        <Link to={`/workouts/${workout.id}`}><p>{workout.title}</p></Link>
                                         <p>{workout.exercises.length} exercises</p>
                                     </div>
                                 ))}
