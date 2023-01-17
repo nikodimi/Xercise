@@ -7,9 +7,10 @@ import {
     updateProfile,
     onAuthStateChanged, 
 } from 'firebase/auth'
-import { setDoc, doc, updateDoc } from 'firebase/firestore'
+import { setDoc, doc, updateDoc, collection, addDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import Container from 'react-bootstrap/Container'
+import workouts from '../premadeWorkouts.json'
 
 const AuthContext = createContext()
 
@@ -35,8 +36,17 @@ const AuthContextProvider = ({ children }) => {
              email,
              name,
              photoURL: auth.currentUser.photoURL,
-             myWorkOuts: []
         })
+
+        workouts.map(workout => {
+            addDoc(collection(db, `users/${auth.currentUser.uid}/workouts`), {
+                title: workout.title,
+                time: workout.time,
+                exercises: workout.exercises,
+                premade: "yes",
+           })
+        })
+
 	}
 
     const updateUser = async () => {
