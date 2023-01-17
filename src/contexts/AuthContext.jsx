@@ -10,7 +10,7 @@ import {
 import { setDoc, doc, updateDoc, collection, addDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import Container from 'react-bootstrap/Container'
-import workouts from '../premadeWorkouts.json'
+import workouts from '../data/premadeWorkouts.json'
 
 const AuthContext = createContext()
 
