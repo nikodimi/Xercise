@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import useGetExercise from "../hooks/useGetExercise"
 
-const SingleExercise = ({ muscle, id }) => {
+const Exercise = ({ muscle, exercise }) => {
     const { addToWorkout, removeFromWorkout, exercises } = useWorkoutStore()
-    const { data, isLoading } = useGetExercise(muscle, id)
+    const { data, isLoading } = useGetExercise(muscle, exercise)
 
     const addExerciseToWorkout = (exercise) => {
         addToWorkout(exercise)
@@ -26,7 +26,7 @@ const SingleExercise = ({ muscle, id }) => {
                 {!isLoading && data &&(
                     <div className="mt-3">
                         <div className="d-flex justify-content-between">
-                            <h5>{data.name}</h5>
+                            <h5>{data.id}</h5>
                             {exists? (
                                 <FontAwesomeIcon 
                                     size="lg" 
@@ -42,6 +42,7 @@ const SingleExercise = ({ muscle, id }) => {
                             )
                         }
                         </div>
+                        <p>{data.instructions}</p>
                     </div>
                 )}                
             </Col>
@@ -49,4 +50,4 @@ const SingleExercise = ({ muscle, id }) => {
     )
 }
 
-export default SingleExercise
+export default Exercise

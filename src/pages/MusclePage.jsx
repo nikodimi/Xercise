@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useParams, useSearchParams } from 'react-router-dom'
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
-import SingleExercise from "../components/SingleExercise"
+import Exercise from "../components/Exercise"
 import { useWorkoutStore } from "../store"
 
 const MusclePage = () => {
@@ -38,7 +38,7 @@ const MusclePage = () => {
                 </Row>
             )}
 
-            {muscleId && (<SingleExercise muscle={id} exercise={muscleId} />)}
+            {muscleId && (<Exercise muscle={id} exercise={muscleId} />)}
 
             {exercises.length >= 1 && (
                 <Row>
