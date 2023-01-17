@@ -1,28 +1,13 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { db } from '../firebase'
 import { addDoc, collection } from 'firebase/firestore'
-import { useAuthContext } from '../contexts/AuthContext'
-import { useSearchParams } from "react-router-dom"
 import { useWorkoutStore } from "../store"
 import useGetMuscles from '../hooks/useGetMuscles'
-import ExerciseByMuscleList from "../components/ExerciseByMuscleList"
-import AllExercisesList from "../components/AllExercisesList"
+import MuscleMenu from '../components/MuscleMenu'
 
-const ExercisesPage = () => {
-    const { currentUser } = useAuthContext()
+const MusclesPage = () => {
     const { resetWorkout, exercises } = useWorkoutStore()
-    const [searchParams, setSearchParams] = useSearchParams({
-        muscleGroup: ""
-    })
-
-    const muscleGroup = searchParams.get('muscleGroup')
     const {data, isLoading} = useGetMuscles()
-
-    const handleClick = (value) => {
-        setSearchParams({
-            muscleGroup: value
-        })
-    }
 
     const addToWorkouts = async(workout) => {
         await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
@@ -32,28 +17,16 @@ const ExercisesPage = () => {
        })
        resetWorkout()
     }
-    
-    return (
 
+    return (
         <Container>
 
             {isLoading && !data && (<p>Loading data...</p>)} 
 
             {!isLoading && data && (
-                <Row className="scrollbar">
-                    {data.map(exercise => (
-                        <Col xs={4} className="scrollbar-item" key={exercise.id} onClick={() => handleClick(exercise.name)}>
-                            <h5 value={exercise.name} >{exercise.name}</h5>
-                        </Col>
-                    ))}
-                </Row>
+                <MuscleMenu data={data}/>
             )}
-
-            {!muscleGroup && <AllExercisesList /> }
-
-            {muscleGroup && <ExerciseByMuscleList muscle={muscleGroup} />}
-
-            {exercises.length >= 1 && (
+                {exercises.length >= 1 && (
                 <Row>
                     <Col>
                         <div className='d-flex justify-content-between my-3'>
@@ -65,8 +38,7 @@ const ExercisesPage = () => {
             )}
 
         </Container>
-
     )
 }
 
-export default ExercisesPage
+export default MusclesPage

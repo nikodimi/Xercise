@@ -10,7 +10,7 @@ const tabs = [
         icon: faBookmark
     },
     {
-        route: "/exercises",
+        route: "/muscles",
         icon: faDumbbell
     },
     {

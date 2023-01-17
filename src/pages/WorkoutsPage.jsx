@@ -23,7 +23,7 @@ const WorkoutsPage = () => {
         <Container>
             <Row>
                 <Col xs={12}>
-                    <Link to={`/exercises`}>
+                    <Link to={`/muscles`}>
                         <div className='create-wrapper d-flex justify-content-center align-center py-3 my-5'>
                             <h5>CREATE NEW WORKOUT</h5>
                             <FontAwesomeIcon className="ms-3" size="xl" icon={faPlus} />

@@ -3,7 +3,7 @@ import { collection, query } from 'firebase/firestore'
 import { useFirestoreQueryData } from '@react-query-firebase/firestore'
 
 const useGetMuscles = () => {
-    // Get reference of collection 'exercises'
+    // Get reference of collection 'muscles'
     const queryRef = query(
 		collection(db, 'muscles')
 	)
