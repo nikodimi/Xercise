@@ -1,7 +1,9 @@
 
 .create-wrapper {
-    border: 0.125rem solid $secondary;
+    background-color: $secondary;
     border-radius: 0.5rem;
+    outline: 1px solid $primary;
+    outline-offset: -0.5rem;
 }
 
 .nav-tabs {
