@@ -3,7 +3,7 @@ import { db } from '../firebase'
 import { addDoc, collection } from 'firebase/firestore'
 import { useWorkoutStore } from "../store"
 import useGetMuscles from '../hooks/useGetMuscles'
-import MuscleMenu from '../components/MuscleMenu'
+import MuscleBoxMenu from '../components/MuscleBoxMenu'
 
 const MusclesPage = () => {
     const { resetWorkout, exercises } = useWorkoutStore()
@@ -19,14 +19,15 @@ const MusclesPage = () => {
     }
 
     return (
-        <Container>
+        <Container className='muscles-container d-flex justify-content-center align-items-center flex-column'>
 
             {isLoading && !data && (<p>Loading data...</p>)} 
 
             {!isLoading && data && (
-                <MuscleMenu data={data}/>
+                <MuscleBoxMenu data={data}/>
             )}
-                {exercises.length >= 1 && (
+
+            {exercises.length >= 1 && (
                 <Row>
                     <Col>
                         <div className='d-flex justify-content-between my-3'>
