@@ -3,8 +3,12 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import Exercise from "../components/Exercise"
 import { useWorkoutStore } from "../store"
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../firebase'
+import { useAuthContext } from '../contexts/AuthContext'
 
 const MusclePage = () => {
+    const { currentUser } = useAuthContext()
     const { id } = useParams()
     const capitalized = id.charAt(0).toUpperCase() + id.slice(1)
     const {data, isLoading} = useGetExercisesByMuscle(capitalized)
@@ -19,6 +23,15 @@ const MusclePage = () => {
         setSearchParams({
             muscle_id: value
         })
+    }
+
+    const addToWorkouts = async(workout) => {
+        await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
+            title: "",
+            time: "",
+            exercises: workout
+       })
+       resetWorkout()
     }
     
     return (
@@ -38,7 +51,7 @@ const MusclePage = () => {
                 </Row>
             )}
 
-            {muscleId && (<Exercise muscle={id} exercise={muscleId} />)}
+            {muscleId && (<Exercise muscle={capitalized} exercise={muscleId} />)}
 
             {exercises.length >= 1 && (
                 <Row>
