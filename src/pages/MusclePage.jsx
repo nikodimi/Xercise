@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import Exercise from "../components/Exercise"
 import { useWorkoutStore } from "../store"
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp} from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from '../contexts/AuthContext'
 
@@ -29,7 +29,9 @@ const MusclePage = () => {
         await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
             title: "",
             time: "",
-            exercises: workout
+            exercises: workout,
+            created_at: serverTimestamp(),
+            completed_at: []
        })
        resetWorkout()
     }
