@@ -1,6 +1,6 @@
 
 .navigation-tabs.container {
-    min-height: 5vh;
+    height: 8vh;
 
     .navbar {
         background-color: $secondary;
@@ -9,10 +9,10 @@
         border-radius: 0.75rem;
     
         .nav-link {
-            color: $secondary-font;
+            color: $font-color-secondary;
 
             &.active {
-                color: $font-color;
+                color: $font-color-primary;
             }
         }
     }

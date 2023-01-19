@@ -22,7 +22,7 @@
 
         .nav-link.active {
             background-color: $primary;
-            color: $font-color;
+            color: $font-color-primary;
             border-top: 1px solid $secondary;
             border-left: 1px solid $secondary;
             border-right: 1px solid $secondary;
@@ -38,6 +38,6 @@
     cursor: pointer;
 
     &:hover {
-        color: $font-color;
+        color: $font-color-primary;
     }
 }
