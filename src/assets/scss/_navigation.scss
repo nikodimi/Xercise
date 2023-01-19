@@ -1,23 +1,18 @@
 
-.navigation-tabs {
-
-    position: fixed;
-    bottom: 1.25rem;
-    right:0;
-    left: 0;
-    z-index: 999;
+.navigation-tabs.container {
+    min-height: 5vh;
 
     .navbar {
-        background-color: $font-color;
+        background-color: $secondary;
         border-bottom: solid 1px #EBEBEB;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        // box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         border-radius: 0.75rem;
     
         .nav-link {
-            color: black;
+            color: $secondary-font;
 
             &.active {
-                color: $primary;
+                color: $font-color;
             }
         }
     }

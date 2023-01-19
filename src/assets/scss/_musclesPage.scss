@@ -1,11 +1,7 @@
-.muscles-container {
-    min-height: 90vh;
-
-    .muscle-box {
-        height: 10vh;
-        background-color:  $secondary;
-        cursor: pointer;
-        outline: 1px solid $primary;
-        outline-offset: -0.5rem;
-    }
+.muscle-box {
+    height: 10vh;
+    background-color:  $secondary;
+    cursor: pointer;
+    outline: 1px solid $primary;
+    outline-offset: -0.5rem;
 }

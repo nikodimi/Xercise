@@ -1,0 +1,39 @@
+.form-group {
+    position: relative;
+}
+
+.form-control {
+    border: none;
+    background-color: $secondary;
+    border-bottom: none;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 2px solid $secondary;
+    color: $font-color;
+
+    &:focus {
+        color: $font-color;
+        background-color: $primary;
+        border: 2px solid $secondary;
+        box-shadow: none;
+    }
+    
+    &::placeholder {
+        color: $font-color;
+    }
+}
+
+.form-icon {
+    position: absolute;
+    right: 5%;
+}
+
+
+
+input[type=file]::-webkit-file-upload-button {
+    background-color: rgb(245, 245, 245);
+}
+
+.login-link {
+    color: red;
+}
