@@ -1,22 +1,14 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import { db } from '../firebase'
-import { addDoc, collection } from 'firebase/firestore'
 import { useWorkoutStore } from "../store"
+import { useState } from 'react'
 import useGetMuscles from '../hooks/useGetMuscles'
 import MuscleBoxMenu from '../components/MuscleBoxMenu'
+import ModalList from '../components/ModalList'
 
 const MusclesPage = () => {
-    const { resetWorkout, exercises } = useWorkoutStore()
+    const { exercises } = useWorkoutStore()
     const {data, isLoading} = useGetMuscles()
-
-    const addToWorkouts = async(workout) => {
-        await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
-            title: "",
-            time: "",
-            exercises: workout
-       })
-       resetWorkout()
-    }
+    const [modalShow, setModalShow] = useState(false);
 
     return (
         <Container className='muscles-container d-flex justify-content-center align-items-center flex-column'>
@@ -30,11 +22,14 @@ const MusclesPage = () => {
             {exercises.length >= 1 && (
                 <Row>
                     <Col>
-                        <div className='d-flex justify-content-between my-3'>
-                            <Button className="save-btn w-100" onClick={() => addToWorkouts(exercises)}>Add to Workout({exercises.length})</Button>
-                            <Button className="reset-btn w-100 ms-3" variant="danger" onClick={() => resetWorkout()}>Reset Workout</Button>
+                        <div className='my-3'>
+                            <Button variant="primary" onClick={() => setModalShow(true)}>
+                                Go to Workout
+                            </Button>
                         </div>
                     </Col>
+
+                    <ModalList show={modalShow} onHide={() => setModalShow(false)}/>
                 </Row>
             )}
 
