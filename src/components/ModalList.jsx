@@ -5,20 +5,22 @@ import {  faMinus } from "@fortawesome/free-solid-svg-icons";
 import { addDoc, collection, serverTimestamp} from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from '../contexts/AuthContext'
+import { useForm } from 'react-hook-form'
 
 const ModalList = ({ show, onHide }) => {
     const { currentUser } = useAuthContext()
     const { resetWorkout, exercises, removeFromWorkout } = useWorkoutStore()
+    const { register, handleSubmit, formState: { errors }} = useForm()
 
     const removeExerciseFromWorkout = (exercise) => {
         removeFromWorkout(exercise)
     }
 
-    const addToWorkouts = async(workout) => {
+    const addToWorkouts = async(data) => {
         await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
-            title: "",
+            title: data.title,
             time: "",
-            exercises: workout,
+            exercises: exercises,
             created_at: serverTimestamp(),
             completed_at: []
        })
@@ -32,13 +34,20 @@ const ModalList = ({ show, onHide }) => {
             className="mt-3" 
         >
             <Modal.Body>
-                <Form>
+                <Form onSubmit={handleSubmit(addToWorkouts)}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Control
-                            type="email"
-                            placeholder="Name your workout"
-                            required
+                            {...register("title", {
+                                required: "Please enter a title",
+                                minLength: {
+                                    value: 2,
+                                    message: "A little longer plz"
+                                }
+                            })}
+                            placeholder="Enter a title if you wanna save"
+                            type="text"
                         />
+                        {errors.title && <div>{errors.title.message}</div>}
                     </Form.Group>
                     
                     {exercises && (
@@ -56,11 +65,11 @@ const ModalList = ({ show, onHide }) => {
                             ))}
                         </div>
                     )}
+                    <Button className="save-btn w-100" type="submit">Save workout</Button>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
                 <div className='w-100'>
-                    <Button className="save-btn w-100" onClick={() => addToWorkouts(exercises)}>Save workout</Button>
                     <Button className="reset-btn w-100 mt-3" variant="danger" onClick={() => resetWorkout()}>Delete Workout</Button>
                 </div>
                 <Button className='w-100 mt-2' onClick={onHide}>
