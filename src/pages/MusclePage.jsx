@@ -26,7 +26,7 @@ const MusclePage = () => {
     }
 
     return (
-        <Container >
+        <Container className='position-relative'>
 
             <MuscleMenu/>
 
@@ -34,23 +34,23 @@ const MusclePage = () => {
 
             {data && !muscleId && (
                 <Row>
-                    {data.map(exercise => (
-                        <Col xs={12} key={exercise.id}>
-                            <div className="exercise-item d-flex justify-content-between mt-4">
+                    <Col xs={12}>
+                        {data.map(exercise => (
+                            <div key={exercise.id} className="exercise-item d-flex justify-content-between mt-4">
                                 <p onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
                             </div>
-                        </Col>
-                    ))}
+                        ))}
+                    </Col>
                 </Row>
             )}
 
             {muscleId && (<Exercise muscle={capitalized} exercise={muscleId} />)}
 
             {exercises.length >= 1 && (
-                <Row>
+                <Row className="w-100">
                     <Col xs={12}>
-                        <Button variant="primary" onClick={() => setModalShow(true)}>
-                             Go to Workout({exercises.length})
+                        <Button className="action-btn modal-btn text-center" onClick={() => setModalShow(true)}>
+                            Go to Workout({exercises.length})
                         </Button>
                     </Col>
 

@@ -11,7 +11,7 @@ const MusclesPage = () => {
     const [modalShow, setModalShow] = useState(false);
 
     return (
-        <Container className='muscles-container d-flex justify-content-center align-items-center flex-column'>
+        <Container className='muscles-container d-flex justify-content-center align-items-center flex-column position-relative'>
 
             {isLoading && !data && (<p>Loading data...</p>)} 
 
@@ -20,10 +20,10 @@ const MusclesPage = () => {
             )}
 
             {exercises.length >= 1 && (
-                <Row>
-                    <Col>
-                        <div className='my-3'>
-                            <Button variant="primary" onClick={() => setModalShow(true)}>
+                <Row className='w-100'>
+                    <Col className='w-100 p-0'>
+                        <div className='w-100'>
+                            <Button className='action-btn modal-btn' onClick={() => setModalShow(true)}>
                                 Go to Workout({exercises.length})
                             </Button>
                         </div>
