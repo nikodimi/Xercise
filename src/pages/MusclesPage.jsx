@@ -24,7 +24,7 @@ const MusclesPage = () => {
                     <Col>
                         <div className='my-3'>
                             <Button variant="primary" onClick={() => setModalShow(true)}>
-                                Go to Workout
+                                Go to Workout({exercises.length})
                             </Button>
                         </div>
                     </Col>

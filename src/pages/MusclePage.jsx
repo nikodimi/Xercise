@@ -50,7 +50,7 @@ const MusclePage = () => {
                 <Row>
                     <Col xs={12}>
                         <Button variant="primary" onClick={() => setModalShow(true)}>
-                             Go to Workout
+                             Go to Workout({exercises.length})
                         </Button>
                     </Col>
 
