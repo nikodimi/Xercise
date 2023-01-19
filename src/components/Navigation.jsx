@@ -14,7 +14,7 @@ const tabs = [
         icon: faDumbbell
     },
     {
-        route: "/login",
+        route: "/history",
         icon: faCalendarDays
     },
     {

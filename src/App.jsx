@@ -12,11 +12,12 @@ import WorkoutPage from './pages/WorkoutPage'
 import MusclesPage from './pages/MusclesPage'
 import MusclePage from './pages/MusclePage'
 import './assets/scss/App.scss'
+import HistoryPage from './pages/HistoryPage'
+
 
 const App = () => {
     return (
         <div id="App">
-            <Navigation />
 
             <Routes>
                 <Route path="/" element={<StartPage />} />
@@ -43,6 +44,11 @@ const App = () => {
                         <MusclePage />
                     </RequireAuth>
                 } />
+                <Route path="/history" element={
+                    <RequireAuth>
+                        <HistoryPage />
+                    </RequireAuth>
+                } />
                 <Route path="/profile" element={
                     <RequireAuth>
                         <ProfilePage />
@@ -50,6 +56,7 @@ const App = () => {
                 } />
             </Routes>
 
+            <Navigation />
             <ReactQueryDevtools position='bottom-left' />
 
         </div>
