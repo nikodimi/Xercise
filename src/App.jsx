@@ -12,6 +12,7 @@ import WorkoutPage from './pages/WorkoutPage'
 import MusclesPage from './pages/MusclesPage'
 import MusclePage from './pages/MusclePage'
 import './assets/scss/App.scss'
+import ActivePage from './pages/ActivePage'
 import HistoryPage from './pages/HistoryPage'
 
 
@@ -52,6 +53,11 @@ const App = () => {
                 <Route path="/profile" element={
                     <RequireAuth>
                         <ProfilePage />
+                    </RequireAuth>
+                } />
+                <Route path="/active/:id" element={
+                    <RequireAuth>
+                        <ActivePage />
                     </RequireAuth>
                 } />
             </Routes>

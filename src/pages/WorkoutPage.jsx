@@ -1,26 +1,32 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { faArrowLeft, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { useAuthContext } from '../contexts/AuthContext'
 import { useState } from 'react';
 import { doc, updateDoc, arrayRemove } from 'firebase/firestore'
 import { db } from '../firebase'
 import useGetWorkout from '../hooks/useGetWorkout'
+import { useActiveWorkout } from '../ActiveWorkout';
 
 const WorkoutPage = () => {
     const { id } = useParams()
     const { currentUser } = useAuthContext()
     const { data, isLoading } = useGetWorkout(currentUser.uid, id)
     const [edit, setEdit] = useState(false)
+    const { addToActiveWorkout, activeWorkout, resetActiveWorkout } = useActiveWorkout()
     const navigate = useNavigate()
 
     const deleteExercise = async (value) => {
-        console.log("du tryckte")
         const ref = doc(db, `users/${currentUser.uid}/workouts`, id)
         await updateDoc(ref, {
             exercises: arrayRemove(value)
         })
+    }
+
+    const handleClick = (value) => {
+        console.log('value', value)
+        addToActiveWorkout(value)
     }
 
     return (
@@ -48,9 +54,12 @@ const WorkoutPage = () => {
                             </div>
                         ))}
                     </div>
+                    <Button disabled={!activeWorkout} onClick={() => handleClick(data)}><Link to={`/active/${data.id}`}>STARTA HÄR</Link></Button>
+                    <Button onClick={() => resetActiveWorkout()}>Reset</Button>
                 </Col>
             </Row>
             )}
+
         </Container>
     )
 }
