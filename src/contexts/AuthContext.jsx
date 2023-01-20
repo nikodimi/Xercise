@@ -11,6 +11,7 @@ import { setDoc, doc, updateDoc, collection, addDoc } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage'
 import Container from 'react-bootstrap/Container'
 import workouts from '../data/premadeWorkouts.json'
+import { useActiveWorkout } from '../ActiveWorkout';
 
 const AuthContext = createContext()
 
@@ -19,6 +20,7 @@ const useAuthContext = () => {
 }
 
 const AuthContextProvider = ({ children }) => {
+    const { resetActiveWorkout } = useActiveWorkout()
     const [currentUser, setCurrentUser] = useState(null) 
     const [userName, setUserName] = useState(null)
     const [userEmail, setUserEmail] = useState(null)
@@ -61,6 +63,7 @@ const AuthContextProvider = ({ children }) => {
 	}
 
     const logout = () => {
+        resetActiveWorkout()
         return signOut(auth)
     }
 
