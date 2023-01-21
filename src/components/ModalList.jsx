@@ -21,8 +21,8 @@ const ModalList = ({ show, onHide }) => {
             title: data.title,
             time: "",
             exercises: exercises,
-            created_at: serverTimestamp(),
-            completed_at: []
+            created: serverTimestamp(),
+            completed: []
        })
        resetWorkout()
     }

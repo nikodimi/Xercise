@@ -39,8 +39,8 @@ const ActivePage = () => {
         await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , id), {
             title: activeWorkout.title,
             time: "",
-            completed_at: [ 
-                ...activeWorkout.completed_at, Timestamp.fromDate( new Date)
+            completed: [ 
+                ...activeWorkout.completed, Timestamp.fromDate( new Date)
             ]
        })
     }
