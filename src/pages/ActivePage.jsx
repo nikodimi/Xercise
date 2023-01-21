@@ -30,6 +30,9 @@ const ActivePage = () => {
         await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , id), {
             title: activeWorkout.title,
             time: "",
+            exercises: 
+                activeWorkout.exercises
+            ,
             completed: [ 
                 ...activeWorkout.completed, Timestamp.fromDate( new Date)
             ]
@@ -39,6 +42,38 @@ const ActivePage = () => {
     const deleteSet = (a, b) =>{
         console.log('a, b', a, b)
         newWorkout.exercises[a].sets.splice(b, 1)
+        console.log('newWorkout', newWorkout)
+
+        updateWorkout(newWorkout)
+    }
+
+    const increaseReps = (a,b) => {
+        console.log('a, b', a, b)
+        newWorkout.exercises[a].sets[b].repetitions++ 
+        console.log('newWorkout', newWorkout)
+
+        updateWorkout(newWorkout)
+    }
+
+    const decreaseReps = (a,b) => {
+        console.log('a, b', a, b)
+        newWorkout.exercises[a].sets[b].repetitions-- 
+        console.log('newWorkout', newWorkout)
+
+        updateWorkout(newWorkout)
+    }
+
+    const increaseWeight = (a,b) => {
+        console.log('a, b', a, b)
+        newWorkout.exercises[a].sets[b].weight++ 
+        console.log('newWorkout', newWorkout)
+
+        updateWorkout(newWorkout)
+    }
+
+    const decreaseWeight = (a,b) => {
+        console.log('a, b', a, b)
+        newWorkout.exercises[a].sets[b].weight-- 
         console.log('newWorkout', newWorkout)
 
         updateWorkout(newWorkout)
@@ -130,13 +165,17 @@ const ActivePage = () => {
                                 </div>
                             </Col>
                             <Col xs={3}>
-                                <div className=''>
-                                    <p>{set.repetitions}</p>
+                                <div className='d-flex'>
+                                    <p className='pe-2'>{set.repetitions}</p>
+                                    <p className='pe-2' onClick={() => increaseReps(i,y)}>+</p>
+                                    <p className='pe-2' onClick={() => decreaseReps(i,y)}>-</p>
                                 </div>
                             </Col>                               
                             <Col xs={4}>
-                                <div className=''>
-                                    <p>{set.weight}</p>
+                                <div className='d-flex'>
+                                    <p className='pe-2'>{set.weight}</p>
+                                    <p className='pe-2' onClick={() => increaseWeight(i,y)}>+</p>
+                                    <p className='pe-2' onClick={() => decreaseWeight(i,y)}>-</p>
                                 </div>
                             </Col>
                             <Col xs={2}>
