@@ -54,7 +54,7 @@ const LoginPage = () => {
                                 />
                             </Form.Group>
 
-                            <Button className="login-btn w-100 mt-4" disabled={loading} type="submit">Log in</Button>
+                            <Button className="action-btn w-100 mt-4" disabled={loading} type="submit">Log in</Button>
                         </Form>
                         
                     </div>

@@ -11,9 +11,9 @@ import WorkoutsPage from './pages/WorkoutsPage'
 import WorkoutPage from './pages/WorkoutPage'
 import MusclesPage from './pages/MusclesPage'
 import MusclePage from './pages/MusclePage'
-import './assets/scss/App.scss'
 import ActivePage from './pages/ActivePage'
 import HistoryPage from './pages/HistoryPage'
+import './assets/scss/App.scss'
 
 
 const App = () => {

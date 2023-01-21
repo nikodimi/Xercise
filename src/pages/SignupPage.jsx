@@ -115,7 +115,7 @@ const SignupPage = () => {
                                 <Link className="ms-2 login-link" to="/login">Login here</Link>
                             </div> 
 
-                            <Button className="signup-btn w-100 mt-4" disabled={loading} type="submit">Sign up</Button>
+                            <Button className="action-btn w-100 mt-4" disabled={loading} type="submit">Sign up</Button>
                         </Form>
                         
                     </div>

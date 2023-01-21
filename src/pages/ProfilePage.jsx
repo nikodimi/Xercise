@@ -2,6 +2,8 @@ import { useRef, useState} from 'react'
 import { Container, Row, Col, Form, Button, Alert, Image } from 'react-bootstrap'
 import { useAuthContext } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
+import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProfilePage = () => {
     const displayNameRef = useRef();
@@ -48,13 +50,12 @@ const ProfilePage = () => {
     }
 
     return (
-        <Container>
+        <Container className="profile-container d-flex flex-column justify-content-center">
             <Row>
                 <Col md={6} className='m-auto'>
                     <div className="update-wrapper">
-                        <h5 className='mb-4'>Profile page</h5>
 
-                        {error && (<Alert variant='danger'>{error}</Alert>)}
+                    {error && (<Alert variant='danger'>{error}</Alert>)}
 
                         <Form onSubmit={handleSubmit}>
 
@@ -67,13 +68,16 @@ const ProfilePage = () => {
                                 />
                             </div>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Username</Form.Label>
+                            <Form.Group className="d-flex justify-content-center align-items-center form-group mt-3">
                                 <Form.Control type="text" ref={displayNameRef} defaultValue={currentUser.displayName} />
+                                <FontAwesomeIcon 
+                                    size="md" 
+                                    icon={faUser}
+                                    className="form-icon" 
+                                />
                             </Form.Group>
 
-                            <Form.Group id="photo" className="mb-3">
-                                <Form.Label>Photo</Form.Label>
+                            <Form.Group id="photo" className="mt-3">
                                 <Form.Control type="file" onChange={handleFileChange} />
                                 <Form.Text>
                                     {photo
@@ -82,15 +86,17 @@ const ProfilePage = () => {
                                 </Form.Text>
                             </Form.Group>
 							
-							<div className="text-center">
-                            	<Button variant="dark" disabled={loading} type="submit">Update Profile</Button>
-							</div>
+                            <Button className="action-btn w-100 mt-3" disabled={loading} type="submit">Update Profile</Button>
+
                         </Form>
                         
                     </div>
 
-                    <div className='mt-5 text-center'>
-						<Link to="/logout"><Button variant="danger">Logout</Button></Link>
+                    <div className='mt-5'>
+						<Link to="/logout">
+                            <Button className="action-btn logout-btn w-100 mt-3" disabled={loading}>Log out</Button>
+                            
+                        </Link>
                     </div>    
                 </Col>
             </Row>
