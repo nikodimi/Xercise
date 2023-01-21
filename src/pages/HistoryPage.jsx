@@ -3,12 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { useAuthContext } from '../contexts/AuthContext'
 import Calendar from 'react-calendar';
 import useGetUserWorkouts from '../hooks/useGetUserWorkouts'
+import moment from 'moment'
 import 'react-calendar/dist/Calendar.css';
 
 const HistoryPage = () => {
     const { currentUser } = useAuthContext()
     const [value, onChange] = useState(new Date());
-    const {data, isLoading} = useGetUserWorkouts(currentUser.uid)
+    const {data, isLoading} = useGetUserWorkouts(currentUser.uid, "history")
 
     console.log('data', data)
 
@@ -28,13 +29,19 @@ const HistoryPage = () => {
             {isLoading && !data && (<p>Loading plz wait...</p>)}
                         
             {!isLoading && data && (
-
+                
                 <Row>
                     <Col xs={12}>
-                        <div>
-                            <h5>Latest workouts</h5>
+                        <h4>Latest workouts</h4>
+                            {data.filter(d => d.completed.length > 0).map((workout,i) => (
+                                
+                                <div key={i}>
+                                    <h5>{workout.title}</h5>
+                                    
+                                    <p>{moment(workout.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
+                                </div>
+                            ))}
 
-                        </div>
                     </Col>
                 </Row>
             )}

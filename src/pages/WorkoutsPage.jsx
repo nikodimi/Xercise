@@ -11,7 +11,7 @@ import useGetUserWorkouts from '../hooks/useGetUserWorkouts'
 const WorkoutsPage = () => {
     const { currentUser } = useAuthContext()
     const [edit, setEdit] = useState(false)
-    const {data, isLoading} = useGetUserWorkouts(currentUser.uid)
+    const {data, isLoading} = useGetUserWorkouts(currentUser.uid, "workout")
 
     const deleteWorkout = async (value) => {
         const ref = doc(db, `users/${currentUser.uid}/workouts`, value.id)
@@ -25,7 +25,7 @@ const WorkoutsPage = () => {
                 <Col xs={12}>
                     <Link to={`/muscles`}>
                         <div className='create-wrapper d-flex justify-content-center align-center py-3 my-5'>
-                            <h5>CREATE NEW WORKOUT</h5>
+                            <h5>Create new workout</h5>
                             <FontAwesomeIcon className="ms-3" size="xl" icon={faPlus} />
                         </div>
                     </Link>
@@ -58,7 +58,7 @@ const WorkoutsPage = () => {
                         )}
                         </Tab>
 
-                        <Tab eventKey="premade workouts" title="Premade Workouts">
+                        <Tab eventKey="premade workouts" title="Sample ">
                         
                         {isLoading && !data && (<p>Loading plz wait...</p>)}
                         
