@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
 const ActivePage = () => {
-    const { id } = useParams()
+    // const { id } = useParams()
     const { currentUser } = useAuthContext()
     const { activeWorkout, updateWorkout } = useActiveWorkout()
     const [reps, setReps] = useState('')
@@ -24,7 +24,7 @@ const ActivePage = () => {
     }
 
     const finishWorkout = async() => {
-        await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , id), {
+        await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , activeWorkout.id), {
             title: activeWorkout.title,
             time: "",
             exercises: 

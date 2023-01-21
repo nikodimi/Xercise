@@ -55,7 +55,7 @@ const App = () => {
                         <ProfilePage />
                     </RequireAuth>
                 } />
-                <Route path="/active/:id" element={
+                <Route path="/active" element={
                     <RequireAuth>
                         <ActivePage />
                     </RequireAuth>

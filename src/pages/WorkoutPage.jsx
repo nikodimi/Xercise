@@ -54,7 +54,7 @@ const WorkoutPage = () => {
                             </div>
                         ))}
                     </div>
-                    <Button disabled={!activeWorkout} onClick={() => handleClick(data)}><Link to={`/active/${data.id}`}>STARTA HÄR</Link></Button>
+                    <Button disabled={!activeWorkout} onClick={() => handleClick(data)}><Link to={`/active`}>STARTA HÄR</Link></Button>
                     <Button onClick={() => resetActiveWorkout()}>Reset</Button>
                 </Col>
             </Row>
