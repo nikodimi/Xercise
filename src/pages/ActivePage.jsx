@@ -10,19 +10,16 @@ const ActivePage = () => {
     const { id } = useParams()
     const { currentUser } = useAuthContext()
     const { activeWorkout, updateWorkout } = useActiveWorkout()
-    const [sets, setSets] = useState('')
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
 
     let newWorkout = activeWorkout
 
     const handleSet = (value) => {
-        for (let i = 0; i < sets; i++) {
-            newWorkout.exercises[value].sets.push({
-                repetitions: reps,
-                weight: weight
-            })
-        }
+        newWorkout.exercises[value].sets.push({
+            repetitions: reps,
+            weight: weight
+        })
         updateWorkout(newWorkout)
     }
 
@@ -40,42 +37,7 @@ const ActivePage = () => {
     }
 
     const deleteSet = (a, b) =>{
-        console.log('a, b', a, b)
         newWorkout.exercises[a].sets.splice(b, 1)
-        console.log('newWorkout', newWorkout)
-
-        updateWorkout(newWorkout)
-    }
-
-    const increaseReps = (a,b) => {
-        console.log('a, b', a, b)
-        newWorkout.exercises[a].sets[b].repetitions++ 
-        console.log('newWorkout', newWorkout)
-
-        updateWorkout(newWorkout)
-    }
-
-    const decreaseReps = (a,b) => {
-        console.log('a, b', a, b)
-        newWorkout.exercises[a].sets[b].repetitions-- 
-        console.log('newWorkout', newWorkout)
-
-        updateWorkout(newWorkout)
-    }
-
-    const increaseWeight = (a,b) => {
-        console.log('a, b', a, b)
-        newWorkout.exercises[a].sets[b].weight++ 
-        console.log('newWorkout', newWorkout)
-
-        updateWorkout(newWorkout)
-    }
-
-    const decreaseWeight = (a,b) => {
-        console.log('a, b', a, b)
-        newWorkout.exercises[a].sets[b].weight-- 
-        console.log('newWorkout', newWorkout)
-
         updateWorkout(newWorkout)
     }
 
@@ -88,58 +50,18 @@ const ActivePage = () => {
                     </div>
                 </Col>
             </Row>
-            
-            <Form className='mt-5'>
-                <FormGroup>
-                    <Row >
-                        <Col xs={4}>
-                            <Form.Control 
-                                onChange={e => setSets(e.target.value)}
-                                type="text" 
-                                placeholder="0" 
-                                required
-                                maxLength={2}
-                            />  
-                        </Col>
-                        <Col xs={4}>
-                            <Form.Control 
-                                onChange={e => setReps(e.target.value)}
-                                type="text" 
-                                placeholder="0" 
-                                required
-                                maxLength={2}
-                            />  
-                        </Col>                               
-                        <Col xs={4}>
-                            <Form.Control 
-                                onChange={e => setWeight(e.target.value)}
-                                type="text" 
-                                placeholder="0"
-                                required
-                                maxLength={3}
-                            />
-                        </Col>
-                    </Row>
-                </FormGroup>
-                
-            </Form>
-    
+ 
             {activeWorkout.exercises?.map((exercise, i) => (
                 <div className='exercise-wrapper mt-4 p-3'>
-                    <Row className='d-flex justify-content-between' key={exercise.id}>
-                        <Col xs={9} className="mb-2">
+                    <Row className='' key={exercise.id}>
+                        <Col xs={12} className="mb-2">
                             <div>
                                 <h6>{exercise.name}</h6>
                             </div>
                         </Col>
-                        <Col xs={3} className="mb-2">
-                            <div>
-                            <Button  onClick={() => handleSet(i)}>Add</Button>
-                            </div>
-                        </Col>
                     </Row>
-                    <Row className='d-flex justify-content-between'>
-                        <Col xs={3}>
+                    <Row className=' mt-3 mb-3'>
+                        <Col xs={2} className="">
                             <div>
                                 <p className='w-100'>Sets</p>
                             </div> 
@@ -149,9 +71,13 @@ const ActivePage = () => {
                                 <p className='w-100'>Reps</p>
                             </div>
                         </Col>
-                        <Col xs={5}>
+                        <Col xs={4}>
                             <div>
                                 <p className='w-100'>Kg</p>
+                            </div>
+                        </Col>
+                        <Col xs={2}>
+                            <div>
                             </div>
                         </Col>
                     </Row>
@@ -159,30 +85,45 @@ const ActivePage = () => {
                     {exercise.sets?.map((set, y) => (
                     
                         <Row key={y} className="mt-1">
-                            <Col xs={3}>
-                                <div className=''>
+                            <Col xs={2}>
+                                <div className='d-flex align-items-center h-100'>
                                     <p>{y+1}</p>
                                 </div>
                             </Col>
-                            <Col xs={3}>
-                                <div className='d-flex'>
-                                    <p className='pe-2'>{set.repetitions}</p>
-                                    <p className='pe-2' onClick={() => increaseReps(i,y)}>+</p>
-                                    <p className='pe-2' onClick={() => decreaseReps(i,y)}>-</p>
-                                </div>
+                            <Col xs={4}>
+                                <Form.Control 
+                                    onChange={e => setReps(e.target.value)}
+                                    type="text" 
+                                    placeholder={set.repetitions}
+                                    required
+                                    maxLength={2}
+                                />  
                             </Col>                               
                             <Col xs={4}>
-                                <div className='d-flex'>
-                                    <p className='pe-2'>{set.weight}</p>
-                                    <p className='pe-2' onClick={() => increaseWeight(i,y)}>+</p>
-                                    <p className='pe-2' onClick={() => decreaseWeight(i,y)}>-</p>
-                                </div>
+                                <Form.Control 
+                                    onChange={e => setWeight(e.target.value)}
+                                    type="text" 
+                                    placeholder={set.weight}
+                                    required
+                                    maxLength={3}
+                                />
                             </Col>
-                            <Col xs={2}>
+                            <Col xs={2} className="d-flex align-items-center">
                                 <div>
                                     <Button onClick={() => deleteSet(i,y)}>X</Button>
                                 </div>
                             </Col>
+
+                            {activeWorkout.exercises[i].sets.length === y+1 && (
+                                <Row className='mt-3'>
+                                    <Col xs={12}className=''>
+                                        <div>
+                                            <p onClick={() => handleSet(i)}>+</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            )}
+
                         </Row>
                     ))}
                 </div>
