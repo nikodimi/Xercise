@@ -14,28 +14,19 @@ const ActivePage = () => {
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
 
-    console.log('sets', sets)
-    console.log('reps', reps)
-    console.log('weight', weight)
-
     let newWorkout = activeWorkout
-    console.log('newWorkout', newWorkout)
 
     const handleSet = (value) => {
-        console.log('sets, newReps, newWeight, ExerciseNR', sets, reps, weight, value)
-
         for (let i = 0; i < sets; i++) {
             newWorkout.exercises[value].sets.push({
                 repetitions: reps,
                 weight: weight
             })
         }
-        console.log('newWorkout', newWorkout)
         updateWorkout(newWorkout)
     }
 
     const finishWorkout = async() => {
-
         await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , id), {
             title: activeWorkout.title,
             time: "",
@@ -43,6 +34,14 @@ const ActivePage = () => {
                 ...activeWorkout.completed, Timestamp.fromDate( new Date)
             ]
        })
+    }
+
+    const deleteSet = (a, b) =>{
+        console.log('a, b', a, b)
+        newWorkout.exercises[a].sets.splice(b, 1)
+        console.log('newWorkout', newWorkout)
+
+        updateWorkout(newWorkout)
     }
 
     return (
@@ -130,14 +129,19 @@ const ActivePage = () => {
                                     <p>{y+1}</p>
                                 </div>
                             </Col>
-                            <Col xs={4}>
+                            <Col xs={3}>
                                 <div className=''>
                                     <p>{set.repetitions}</p>
                                 </div>
                             </Col>                               
-                            <Col xs={5}>
+                            <Col xs={4}>
                                 <div className=''>
                                     <p>{set.weight}</p>
+                                </div>
+                            </Col>
+                            <Col xs={2}>
+                                <div>
+                                    <Button onClick={() => deleteSet(i,y)}>X</Button>
                                 </div>
                             </Col>
                         </Row>
