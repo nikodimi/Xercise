@@ -4,9 +4,35 @@
     border-radius: 5rem;
     padding: 0.75rem 0;
 
+    &:active {
+        background-color: $primary!important;
+        border: 0.25rem solid $secondary!important
+    }
+
     &.modal-btn {
         width: 90%;
         position: absolute;
         bottom: 3%;
     }
+
+    &.save-btn {
+        background-color: $secondary;
+        border: 0.25rem solid green;
+    }
 }
+
+.delete-btn {
+    background-color: $secondary;
+    border: 0.25rem solid rgb(122, 16, 16);
+    border-radius: 5rem;
+    padding: 0.75rem 0;
+}
+
+
+.btn:disabled,
+.btn:hover
+{
+    background-color: $primary;
+    border: 2px solid $secondary;
+}
+
