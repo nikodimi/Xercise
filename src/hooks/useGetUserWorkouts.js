@@ -14,8 +14,8 @@ const useGetUserWorkouts = (id, value) => {
     }
     if (value == "workout") {
          queryRef = query(
-            collection(db, `users/${id}/workouts`),
-            orderBy('created', 'desc')
+            collection(db, `users/${id}/workouts`)
+           
         )
     }
 
