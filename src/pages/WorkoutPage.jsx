@@ -15,7 +15,7 @@ const WorkoutPage = () => {
     const { currentUser } = useAuthContext()
     const { data, isLoading } = useGetWorkout(currentUser.uid, id)
     const [edit, setEdit] = useState(false)
-    const { addToActiveWorkout, activeWorkout, resetActiveWorkout } = useActiveWorkout()
+    const { addToActiveWorkout, activeWorkout } = useActiveWorkout()
     const navigate = useNavigate()
 
     const deleteExercise = async (value) => {
@@ -74,16 +74,18 @@ const WorkoutPage = () => {
                 
                 <Col xs={12}>
                     <div className='mt-5'>
-                        {/* <Button className="action-btn w-100" disabled={!activeWorkout.length} onClick={() => {handleClick(data)} }>
+                        <Button className="action-btn w-100" 
+                            // disabled={!activeWorkout} 
+                            onClick={() => {handleClick(data)} }
+                        >
                             <Link to={`/active`}>Start workout</Link>
                         </Button>
                         
-                        {activeWorkout.length && (
+                        {/* {activeWorkout && ( */}
                             <Link to={`/active`}>
                                 <Button className="action-btn w-100 mt-4">Go to Started workout</Button>
                             </Link>
-                        )} */}
-                        {/* <Button className="action-btn w-100 mt-4" onClick={() => resetActiveWorkout()}>Reset</Button> */}
+                        {/* )} */}
 
                     </div>
                 </Col>
