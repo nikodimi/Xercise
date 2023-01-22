@@ -8,6 +8,7 @@ import { doc, updateDoc, arrayRemove } from 'firebase/firestore'
 import { db } from '../firebase'
 import useGetWorkout from '../hooks/useGetWorkout'
 import { useActiveWorkout } from '../ActiveWorkout';
+import moment from 'moment'
 
 const WorkoutPage = () => {
     const { id } = useParams()
@@ -23,6 +24,7 @@ const WorkoutPage = () => {
             exercises: arrayRemove(value)
         })
     }
+    console.log('workout', activeWorkout)
 
     const handleClick = (value) => {
         console.log('value', value)
@@ -37,25 +39,53 @@ const WorkoutPage = () => {
             {!isLoading && data && (
 
             <Row>
-                <Col>
+                <Col xs={12}>
                     <FontAwesomeIcon size="lg" icon={faArrowLeft} onClick={() => navigate(-1)}/>
                     <div className='mt-3'>
                         <div className='d-flex justify-content-between'>
                             <h5>{data.title}</h5>
                             <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
                         </div>
-                        {data.exercises?.map(exercise => (
-                            <div key={exercise.id} className="d-flex justify-content-between mt-4">
-                                <h6>{exercise.name}</h6>
-                                {edit && (
-                                    <FontAwesomeIcon size="lg" icon={faTrash} onClick={() => deleteExercise(exercise)}
-                                    />
-                                )}
+                        
+                        {data.exercises?.map((exercise, i) => (
+                            
+                            <div key={i} className="mt-4">
+                                <div className="d-flex justify-content-between">
+                                    <h6>{exercise.name}</h6>
+                                    {edit && (
+                                        <FontAwesomeIcon size="sm" icon={faTrash} onClick={() => deleteExercise(exercise)}
+                                        />
+                                    )}
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <p>{moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
+                                </div>
+
+                                {exercise.sets.map((set,i) => (
+                                    <div key={i} className='d-flex'>
+                                        <p>{set.repetitions}x</p>
+                                        <p>{set.weight}</p>
+                                    </div>
+                                ))}
                             </div>
                         ))}
                     </div>
-                    <Button disabled={!activeWorkout} onClick={() => handleClick(data)}><Link to={`/active`}>STARTA HÄR</Link></Button>
-                    <Button onClick={() => resetActiveWorkout()}>Reset</Button>
+                </Col>
+                
+                <Col xs={12}>
+                    <div className='mt-5'>
+                        {/* <Button className="action-btn w-100" disabled={!activeWorkout.length} onClick={() => {handleClick(data)} }>
+                            <Link to={`/active`}>Start workout</Link>
+                        </Button>
+                        
+                        {activeWorkout.length && (
+                            <Link to={`/active`}>
+                                <Button className="action-btn w-100 mt-4">Go to Started workout</Button>
+                            </Link>
+                        )} */}
+                        {/* <Button className="action-btn w-100 mt-4" onClick={() => resetActiveWorkout()}>Reset</Button> */}
+
+                    </div>
                 </Col>
             </Row>
             )}
