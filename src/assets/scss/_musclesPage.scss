@@ -1,7 +1,19 @@
-.muscle-box {
-    height: 10vh;
-    background-color:  $secondary;
-    cursor: pointer;
-    outline: 1px solid $primary;
-    outline-offset: -0.5rem;
+.muscle-box-wrapper{
+    
+    &:nth-child(odd) {
+        padding-left: 0.5rem;
+    }
+
+    &:nth-child(even) {
+        padding-right: 0.5rem;
+    }
+
+    .muscle-box {
+        height: 10vh;
+        background-color:  $secondary;
+        cursor: pointer;
+        outline: 1px solid $primary;
+        outline-offset: -0.5rem;
+    }
 }
+

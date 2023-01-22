@@ -31,7 +31,13 @@
 
 
 input[type=file]::-webkit-file-upload-button {
-    background-color: rgb(245, 245, 245);
+    background-color: $secondary;
+    color: $font-color-primary;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-right: 2px solid $primary;
+    padding: 0.25rem 1rem;
+
 }
 
 .login-link {

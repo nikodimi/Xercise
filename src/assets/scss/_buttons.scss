@@ -3,6 +3,7 @@
     border: 0.25rem solid $secondary;
     border-radius: 5rem;
     padding: 0.75rem 0;
+    color: $font-color-primary;
 
     &:active {
         background-color: $primary!important;

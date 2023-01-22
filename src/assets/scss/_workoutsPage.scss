@@ -1,7 +1,7 @@
 
 .create-wrapper {
     background-color: $secondary;
-    border-radius: 0.5rem;
+    // border-radius: 0.5rem;
     outline: 1px solid $primary;
     outline-offset: -0.5rem;
 }
@@ -9,6 +9,7 @@
 .nav-tabs {
     width: 100%;
     border-color: $primary;
+    border-radius: 0;
 
     .nav-item {
         background-color: $primary;

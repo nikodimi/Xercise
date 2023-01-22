@@ -1,10 +1,12 @@
 .react-calendar {
-    max-width: 330px!important;
+    max-width: 340px!important;
 }
-.workout-wrapper {
+.workout-content {
+    padding-bottom: 0.75rem;
+    border-bottom: 0.25rem solid $secondary;
+}
 
-    .workout-content {
-        padding: 0.5rem;
-        border: 1px solid $secondary;
-    }
+.latest-header {
+    padding-bottom: 0.75rem;
+    border-bottom: 0.25rem solid $secondary;
 }
