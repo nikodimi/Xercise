@@ -71,7 +71,7 @@ const ProfilePage = () => {
                             <Form.Group className="d-flex justify-content-center align-items-center form-group mt-3">
                                 <Form.Control type="text" ref={displayNameRef} defaultValue={currentUser.displayName} />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faUser}
                                     className="form-icon" 
                                 />
