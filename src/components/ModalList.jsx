@@ -83,10 +83,10 @@ const ModalList = ({ show, onHide }) => {
                             ))}
                         </div>
                     )}
-                    <Button className="action-btn save-btn w-100 mt-5" type="submit">Save Workout</Button>
+                    <Button className="action-btn save-btn w-100 mt-5" type="submit">Save as New Workout</Button>
                 </Form>
                 <div className='w-100 mt-3'>
-                    <Button className="delete-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
+                    <Button className="action-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
                 </div>
 
                 <div className='d-flex justify-content-center mt-4'>
