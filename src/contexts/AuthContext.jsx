@@ -43,7 +43,7 @@ const AuthContextProvider = ({ children }) => {
                 title: workout.title,
                 completed: [],
                 exercises: workout.exercises,
-                premade: "yes",
+                premade: true,
            })
         })
 

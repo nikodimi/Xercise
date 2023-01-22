@@ -42,7 +42,7 @@ const WorkoutsPage = () => {
                         {!isLoading && data && (
 
                             <div>
-                                {data.filter(d => d.premade != "yes").map(workout => (
+                                {data.filter(d => d.premade == false).map(workout => (
                                     <div key={workout.id} className="d-flex justify-content-between workout-box mt-2">
                                         <Link className="w-50" to={`/workouts/${workout.id}`}><p>{workout.title}</p></Link>
                                         <p className='w-40'>{workout.exercises.length} exercises</p>
@@ -64,7 +64,7 @@ const WorkoutsPage = () => {
                         
                         {!isLoading && data && (
                             <div>
-                                {data.filter(d => d.premade == "yes").map(workout => (
+                                {data.filter(d => d.premade == true).map(workout => (
                                     <div key={workout.id} className="d-flex justify-content-between workout-box mt-2">
                                         <Link to={`/workouts/${workout.id}`}><p>{workout.title}</p></Link>
                                         <p>{workout.exercises.length} exercises</p>

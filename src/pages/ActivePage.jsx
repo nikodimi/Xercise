@@ -27,6 +27,7 @@ const ActivePage = () => {
         await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , activeWorkout.id), {
             title: activeWorkout.title,
             time: "",
+            premade: activeWorkout.premade,
             exercises: 
                 activeWorkout.exercises
             ,
@@ -53,7 +54,7 @@ const ActivePage = () => {
             </Row>
  
             {activeWorkout.exercises?.map((exercise, i) => (
-                <div key={exercise.id} className='exercise-wrapper mt-4 p-3'>
+                <div key={i} className='exercise-wrapper mt-4 p-3'>
                     <Row className='' key={exercise.id}>
                         <Col xs={12} className="mb-2">
                             <div>
