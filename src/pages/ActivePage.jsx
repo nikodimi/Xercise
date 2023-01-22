@@ -9,7 +9,7 @@ import { useState } from 'react'
 const ActivePage = () => {
     // const { id } = useParams()
     const { currentUser } = useAuthContext()
-    const { activeWorkout, updateWorkout } = useActiveWorkout()
+    const { activeWorkout, updateWorkout, resetActiveWorkout  } = useActiveWorkout()
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
 
@@ -34,6 +34,7 @@ const ActivePage = () => {
                 ...activeWorkout.completed, Timestamp.fromDate( new Date)
             ]
        })
+       resetActiveWorkout()
     }
 
     const deleteSet = (a, b) =>{
@@ -52,7 +53,7 @@ const ActivePage = () => {
             </Row>
  
             {activeWorkout.exercises?.map((exercise, i) => (
-                <div className='exercise-wrapper mt-4 p-3'>
+                <div key={exercise.id} className='exercise-wrapper mt-4 p-3'>
                     <Row className='' key={exercise.id}>
                         <Col xs={12} className="mb-2">
                             <div>
@@ -110,7 +111,9 @@ const ActivePage = () => {
                             </Col>
                             <Col xs={2} className="d-flex align-items-center">
                                 <div>
-                                    <Button onClick={() => deleteSet(i,y)}>X</Button>
+                                    {activeWorkout.exercises[i].sets.length > 1 &&  (
+                                        <Button onClick={() => deleteSet(i,y)}>X</Button>
+                                    )}
                                 </div>
                             </Col>
 
