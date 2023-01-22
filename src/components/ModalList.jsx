@@ -23,10 +23,10 @@ const ModalList = ({ show, onHide }) => {
     const createEmptyWorkout = () => {
         const emptyWorkout = {
             title: 'Empty Workout',
-            time: "",
             exercises: exercises,
             created: serverTimestamp(),
-            completed: []
+            completed: [],
+            premade: false
         }
         addToActiveWorkout(emptyWorkout)
         resetWorkout()
@@ -35,10 +35,10 @@ const ModalList = ({ show, onHide }) => {
     const addToWorkouts = async(data) => {
         await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
             title: data.title,
-            time: "",
             exercises: exercises,
             created: serverTimestamp(),
-            completed: []
+            completed: [],
+            premade: false,
        })
        resetWorkout()
     }
