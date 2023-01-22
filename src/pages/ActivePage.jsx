@@ -1,15 +1,12 @@
-import { updateDoc, doc, Timestamp } from '@firebase/firestore'
-import { db } from '../firebase'
-import { Container, Row, Col, Button, FormGroup, Form } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { useActiveWorkout } from '../ActiveWorkout'
-import { useAuthContext } from '../contexts/AuthContext'
-import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import ModalWorkout from '../components/ModalWorkout'
 
 const ActivePage = () => {
-    // const { id } = useParams()
-    const { currentUser } = useAuthContext()
-    const { activeWorkout, updateWorkout, resetActiveWorkout  } = useActiveWorkout()
+
+    const [modalShow, setModalShow] = useState(false);
+    const { activeWorkout, updateWorkout } = useActiveWorkout()
     const [reps, setReps] = useState('')
     const [weight, setWeight] = useState('')
 
@@ -21,21 +18,6 @@ const ActivePage = () => {
             weight: weight
         })
         updateWorkout(newWorkout)
-    }
-
-    const finishWorkout = async() => {
-        await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , activeWorkout.id), {
-            title: activeWorkout.title,
-            time: "",
-            premade: activeWorkout.premade,
-            exercises: 
-                activeWorkout.exercises
-            ,
-            completed: [ 
-                ...activeWorkout.completed, Timestamp.fromDate( new Date)
-            ]
-       })
-       resetActiveWorkout()
     }
 
     const deleteSet = (a, b) =>{
@@ -132,8 +114,19 @@ const ActivePage = () => {
                     ))}
                 </div>
             ))} 
+            <Row>
+                <Col xs={12}>
+                    <div>
+                        <Button className="action-btn modal-btn text-center" onClick={() => setModalShow(true)}>
+                            Finish Workout
+                        </Button>
 
-            <Button className="action-btn w-100 mt-4" disabled={!activeWorkout} onClick={() => finishWorkout(activeWorkout)}>Finish Workout</Button>
+                    </div>
+                </Col>
+            </Row>
+
+            <ModalWorkout show={modalShow} onHide={() => setModalShow(false)}/>
+            
         </Container>
     )
 }
