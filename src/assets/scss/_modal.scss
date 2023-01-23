@@ -5,6 +5,10 @@
         background-color: $primary;
         color: $font-color-primary;
 
+        .modal-header {
+            border-bottom: none;
+        }
+
         .modal-body {
             border-bottom-left-radius: none;
         }
