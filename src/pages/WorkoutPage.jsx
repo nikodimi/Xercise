@@ -42,7 +42,9 @@ const WorkoutPage = () => {
                     <div className='mt-3'>
                         <div className='d-flex justify-content-between'>
                             <h5>{data.title}</h5>
-                            <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
+                            {data.premade === false && (
+                                <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
+                            )}
                         </div>
                         
                         {data.exercises?.map((exercise, i) => (
