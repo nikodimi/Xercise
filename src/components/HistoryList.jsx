@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const HistoryList = ({ data }) => {
     return (
-        <Row className='w-100'>
+        <Row className='w-100 py-2'>
             <Col xs={12}>
 
                 <div className='mt-3 latest-header'>

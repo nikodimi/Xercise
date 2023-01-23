@@ -25,6 +25,7 @@ const MusclePage = () => {
         })
     }
 
+
     return (
         <Container className='position-relative'>
 
@@ -36,8 +37,9 @@ const MusclePage = () => {
                 <Row>
                     <Col xs={12}>
                         {data.map(exercise => (
-                            <div key={exercise.id} className="exercise-item d-flex justify-content-between mt-4">
-                                <p onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
+                            <div key={exercise.id} className="exercise-item mt-4">
+                                <p className="text-uppercase fw-bold text-white" onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
+                                <p className=''>{capitalized}</p>
                             </div>
                         ))}
                     </Col>

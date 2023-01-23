@@ -13,8 +13,7 @@ const ModalList = ({ show, onHide }) => {
     const { currentUser } = useAuthContext()
     const { resetWorkout, exercises, removeFromWorkout } = useWorkoutStore()
     const { register, handleSubmit, formState: { errors }} = useForm()
-    const { addToActiveWorkout, activeWorkout } = useActiveWorkout()
-
+    const { addToActiveWorkout, showButton } = useActiveWorkout()
 
     const removeExerciseFromWorkout = (exercise) => {
         removeFromWorkout(exercise)
@@ -83,21 +82,17 @@ const ModalList = ({ show, onHide }) => {
                             ))}
                         </div>
                     )}
-                    <Button className="action-btn save-btn w-100 mt-5" type="submit">Save as New Workout</Button>
+                    <Button className="action-btn save-btn w-100 mt-5" type="submit">Save Workout</Button>
                 </Form>
                 <div className='w-100 mt-3'>
                     <Button className="action-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
                 </div>
 
-                <div className='d-flex justify-content-center mt-4'>
-                    <p>Or</p>
+                <div className='mt-4'>
+                    <p className='text-center'>Workout already active</p>
+                    <Button className="action-btn w-100 mt-1" disabled={showButton} onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
                 </div>
-
-                {/* {!activeWorkout && ( */}
-                    <div className='mt-4'>
-                        <Button className="action-btn w-100" onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
-                    </div>
-                {/* )} */}
+             
 
                 {/* {activeWorkout && (
                     <>
