@@ -5,11 +5,12 @@ export const useActiveWorkout = create(
   persist(
     (set, get) => ({
       activeWorkout: {},
+      showButton: false,
       addToActiveWorkout: (obj) => {
         set(() => {
-
           return {
-            activeWorkout: obj
+            activeWorkout: obj,
+            showButton:true
           }
         })
       },
@@ -22,7 +23,7 @@ export const useActiveWorkout = create(
         })
       },
       resetActiveWorkout: () =>
-        set((state) => ({ ...state, activeWorkout: {}}))
+        set((state) => ({ ...state, activeWorkout: {}, showButton: false}))
     }),
     {
       name: 'active-workout'
