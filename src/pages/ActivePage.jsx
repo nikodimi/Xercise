@@ -7,16 +7,25 @@ const ActivePage = () => {
 
     const [modalShow, setModalShow] = useState(false);
     const { activeWorkout, updateWorkout } = useActiveWorkout()
-    const [reps, setReps] = useState('')
-    const [weight, setWeight] = useState('')
 
     let newWorkout = activeWorkout
 
     const handleSet = (value) => {
+        const getLength = newWorkout.exercises[value].sets.length
+        const getLastSet = newWorkout.exercises[value].sets[getLength-1]
         newWorkout.exercises[value].sets.push({
-            repetitions: reps,
-            weight: weight
+            weight: getLastSet.weight,
+            repetitions: getLastSet.repetitions
         })
+        updateWorkout(newWorkout)
+    }
+    const updateWeight = (a, b, value) => {
+        newWorkout.exercises[a].sets[b].weight = value
+        updateWorkout(newWorkout)
+    }
+
+    const updateReps = (a, b, value) => {
+        newWorkout.exercises[a].sets[b].repetitions = value
         updateWorkout(newWorkout)
     }
 
@@ -76,19 +85,17 @@ const ActivePage = () => {
                             </Col>
                             <Col xs={4}>
                                 <Form.Control 
-                                    onChange={e => setReps(e.target.value)}
-                                    type="text" 
+                                    onChange={e => updateReps(i,y,e.target.value)}
+                                    type="number" 
                                     placeholder={set.repetitions}
-                                    required
                                     maxLength={2}
                                 />  
                             </Col>                               
                             <Col xs={4}>
                                 <Form.Control 
-                                    onChange={e => setWeight(e.target.value)}
-                                    type="text" 
+                                    onChange={e => updateWeight(i,y,e.target.value)}
+                                    type="number" 
                                     placeholder={set.weight}
-                                    required
                                     maxLength={3}
                                 />
                             </Col>
@@ -103,13 +110,12 @@ const ActivePage = () => {
                             {activeWorkout.exercises[i].sets.length === y+1 && (
                                 <Row className='mt-3'>
                                     <Col xs={12}className=''>
-                                        <div>
-                                            <p onClick={() => handleSet(i)}>+</p>
+                                        <div className='text-center'>
+                                            <p onClick={() => handleSet(i)}>Add set+</p>
                                         </div>
                                     </Col>
                                 </Row>
                             )}
-
                         </Row>
                     ))}
                 </div>
