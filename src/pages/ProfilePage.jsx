@@ -2,7 +2,7 @@ import { useRef, useState} from 'react'
 import { Container, Row, Col, Form, Button, Alert, Image } from 'react-bootstrap'
 import { useAuthContext } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
-import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProfilePage = () => {
@@ -86,15 +86,15 @@ const ProfilePage = () => {
                                 </Form.Text>
                             </Form.Group>
 							
-                            <Button className="action-btn w-100 mt-3" disabled={loading} type="submit">Update Profile</Button>
+                            <Button className="action-btn w-100 mt-2" disabled={loading} type="submit">Update Profile</Button>
 
                         </Form>
                         
                     </div>
 
-                    <div className='mt-5'>
+                    <div className='mt-3'>
 						<Link to="/logout">
-                            <Button className="action-btn logout-btn w-100 mt-3" disabled={loading}>Log out</Button>
+                            <Button className="action-btn logout-btn w-100" disabled={loading}>Log out</Button>
                             
                         </Link>
                     </div>    

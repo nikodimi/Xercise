@@ -7,13 +7,13 @@ const HistoryList = ({ data }) => {
             <Col xs={12}>
 
                 <div className='mt-3 latest-header'>
-                    <h4>Latest workouts</h4>
+                    <h3 className='text-white text-uppercase'>Latest workouts</h3>
                 </div>
 
                 {data.filter(d => d.completed.length > 0).map((workout,i) => (
                     <div key={i} className="workout-content mt-3">
                         <div className="d-flex justify-content-between">
-                            <h5>{workout.title}</h5>
+                            <h6 className='text-uppercase text-white fw-bold'>{workout.title}</h6>
                             <p>{moment(workout.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
                         </div>
                         <div className='mt-2'>

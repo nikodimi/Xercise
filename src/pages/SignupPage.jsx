@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from "../contexts/AuthContext";
-import { faUser, faEnvelope, faLock, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SignupPage = () => {
@@ -105,7 +105,7 @@ const SignupPage = () => {
                                 />
                                 <FontAwesomeIcon 
                                     size="md" 
-                                    icon={faCheck}
+                                    icon={faLock}
                                     className="form-icon" 
                                 />
                             </Form.Group>

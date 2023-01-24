@@ -7,7 +7,7 @@ const StartPage = () => {
 
     setTimeout(() => {
         navigate('/signup')
-    }, 3000)
+    }, 4000)
 
     return (
         <Container className='d-flex justify-content-center align-items-center'>

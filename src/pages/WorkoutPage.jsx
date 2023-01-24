@@ -42,7 +42,7 @@ const WorkoutPage = () => {
                     <FontAwesomeIcon size="lg" icon={faArrowLeft} onClick={() => navigate(-1)}/>
                     <div className='mt-3'>
                         <div className='d-flex justify-content-between'>
-                            <h5>{data.title}</h5>
+                            <h3 className='text-white text-uppercase'>{data.title}</h3>
                             {data.premade === false && (
                                 <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
                             )}
@@ -52,13 +52,13 @@ const WorkoutPage = () => {
                             
                             <div key={i} className="mt-4">
                                 <div className="d-flex justify-content-between">
-                                    <h6>{exercise.name}</h6>
+                                    <h6 className='text-white fw-bold text-uppercase'>{exercise.name}</h6>
                                     {edit && (
                                         <FontAwesomeIcon size="sm" icon={faTrash} onClick={() => deleteExercise(exercise)}
                                         />
                                     )}
                                 </div>
-                                <div className="d-flex justify-content-between">
+                                <div className="d-flex justify-content-between mt-1 mb-3">
                                     <p>{moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
                                 </div>
 
