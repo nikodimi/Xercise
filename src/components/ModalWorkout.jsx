@@ -57,7 +57,7 @@ const ModalWorkout = ({ show, onHide }) => {
             
             <Modal.Body>
 
-                {activeWorkout.premade === true && (
+                {activeWorkout.premade === true || activeWorkout.title =="Empty Workout" && (
                     <Form onSubmit={handleSubmit(saveWorkout)}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
