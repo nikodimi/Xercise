@@ -8,6 +8,7 @@ import { useAuthContext } from '../contexts/AuthContext'
 import { useForm } from 'react-hook-form'
 import { useActiveWorkout } from '../ActiveWorkout';
 import { Link } from 'react-router-dom'
+import moment from 'moment/moment';
 
 const ModalList = ({ show, onHide }) => {
     const { currentUser } = useAuthContext()
@@ -23,7 +24,7 @@ const ModalList = ({ show, onHide }) => {
         const emptyWorkout = {
             title: 'Empty Workout',
             exercises: exercises,
-            created: serverTimestamp(),
+            created: moment().unix(),
             completed: [],
             premade: false
         }
