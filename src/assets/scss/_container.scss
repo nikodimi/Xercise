@@ -1,0 +1,16 @@
+
+.small-container {
+    height: calc(100vh - 10rem);
+    overflow-y: scroll;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height:5rem;;
+}
+
+.hidden-container {
+    display: none;
+}

@@ -28,42 +28,49 @@ const App = () => {
                 <Route path="/workouts" element={
                     <RequireAuth>
                         <WorkoutsPage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/workouts/:id" element={
                     <RequireAuth>
                         <WorkoutPage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/muscles" element={
                     <RequireAuth>
                         <MusclesPage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/muscles/:id" element={
                     <RequireAuth>
                         <MusclePage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/history" element={
                     <RequireAuth>
                         <HistoryPage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/profile" element={
                     <RequireAuth>
                         <ProfilePage />
+                        <Navigation />
                     </RequireAuth>
                 } />
                 <Route path="/active" element={
                     <RequireAuth>
                         <ActivePage />
+                        <Navigation />
                     </RequireAuth>
                 } />
             </Routes>
 
-            <Navigation />
-            <ReactQueryDevtools position='bottom-left' />
+            {/* <Navigation /> */}
+            {/* <ReactQueryDevtools position='bottom-left' /> */}
 
         </div>
     )

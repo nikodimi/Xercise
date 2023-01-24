@@ -123,8 +123,8 @@ const AuthContextProvider = ({ children }) => {
     return (
 		<AuthContext.Provider value={contextValues}>
             {loading ? (
-                <Container className='vh-100 d-flex justify-content-center align-items-center'>
-                    <p>Loading...</p>
+                <Container className='vh-100 d-flex justify-content-center align-items-center loading-container'>
+                    
                 </Container>
             ) : (
                 children

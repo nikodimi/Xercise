@@ -30,7 +30,8 @@ const WorkoutPage = () => {
     }
 
     return (
-        <Container className='mt-3'>
+        <>
+        <Container className='small-container mt-3'>
 
             {isLoading && !data && (<p>Loading plz wait...</p>)}
 
@@ -71,28 +72,36 @@ const WorkoutPage = () => {
                         ))}
                     </div>
                 </Col>
+       
                 
+            </Row>
+            )}
+
+        </Container>
+
+        <Container className="button-container">
+            <Row>
                 <Col xs={12}>
-                    <div className='mt-5'>
-                        <Button className="action-btn w-100" 
-                            disabled={showButton} 
-                            onClick={() => {handleClick(data)} }
-                        >
-                            <Link to={`/active`}>Start workout</Link>
-                        </Button>
-                        
+                    <div className=''>
+                        {!showButton && (
+                            <Button className="action-btn w-100" 
+                                onClick={() => {handleClick(data)} }
+                            >
+                                <Link to={`/active`}>Start workout</Link>
+                            </Button>
+                        )}
+
                         {showButton && (
                             <Link to={`/active`}>
-                                <Button className="action-btn w-100 mt-4">Go to Started workout</Button>
+                                <Button className="action-btn w-100">Go to Started workout</Button>
                             </Link>
                         )}
 
                     </div>
                 </Col>
             </Row>
-            )}
-
         </Container>
+        </>
     )
 }
 

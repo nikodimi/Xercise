@@ -25,42 +25,47 @@ const MusclePage = () => {
         })
     }
 
-
     return (
-        <Container className='position-relative'>
+        <>
+            <Container className={exercises.length ? 'small-container' : ""}>
 
-            <MuscleMenu/>
+                <MuscleMenu/>
 
-            {isLoading && !data && (<p>Loading data...</p>)}
+                {isLoading && !data && (<p>Loading data...</p>)}
 
-            {data && !muscleId && (
-                <Row>
-                    <Col xs={12}>
-                        {data.map(exercise => (
-                            <div key={exercise.id} className="exercise-item mt-4">
-                                <p className="text-uppercase fw-bold text-white" onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
-                                <p className=''>{capitalized}</p>
-                            </div>
-                        ))}
-                    </Col>
-                </Row>
-            )}
+                {data && !muscleId && (
+                    <Row>
+                        <Col xs={12}>
+                            {data.map(exercise => (
+                                <div key={exercise.id} className="exercise-item mt-4">
+                                    <p className="text-uppercase fw-bold text-white" onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
+                                    <p className=''>{capitalized}</p>
+                                </div>
+                            ))}
+                        </Col>
+                    </Row>
+                )}
 
-            {muscleId && (<Exercise muscle={capitalized} exercise={muscleId} />)}
+                {muscleId && (<Exercise muscle={capitalized} exercise={muscleId} />)}
+                
+            </Container>
+
+ 
 
             {exercises.length >= 1 && (
-                <Row className="w-100">
-                    <Col xs={12}>
-                        <Button className="action-btn modal-btn text-center" onClick={() => setModalShow(true)}>
-                            Go to Workout({exercises.length})
-                        </Button>
-                    </Col>
+                <Container className='button-container'>
+                    <Row className="w-100 ">
+                        <Col xs={12}>
+                            <Button className="action-btn text-center w-100" onClick={() => setModalShow(true)}>
+                                Go to Workout({exercises.length})
+                            </Button>
+                        </Col>
 
-                    <ModalList show={modalShow} onHide={() => setModalShow(false)}/>
-                </Row>
+                        <ModalList show={modalShow} onHide={() => setModalShow(false)}/>
+                    </Row>
+                </Container>
             )}
-
-        </Container>
+        </>
     )
 }
 

@@ -25,7 +25,7 @@ const tabs = [
 
 const Navigation = () => {
 	return (
-        <Container className='navigation-tabs'>
+        <Container className='navigation-tabs d-flex flex-column justify-content-center'>
             <Row>
                 <Col sm={12}>
                     <nav className="navbar" role="navigation">
