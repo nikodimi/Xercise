@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { doc, updateDoc, arrayRemove } from 'firebase/firestore'
 import { db } from '../firebase'
 import useGetWorkout from '../hooks/useGetWorkout'
-import { useActiveWorkout } from '../ActiveWorkout';
+import { useActiveWorkout } from '../zustand/ActiveWorkout';
 import moment from 'moment'
 
 const WorkoutPage = () => {
@@ -31,7 +31,7 @@ const WorkoutPage = () => {
 
     return (
         <>
-        <Container className='small-container mt-3'>
+        <Container className='small-container pt-4'>
 
             {isLoading && !data && (<p>Loading plz wait...</p>)}
 
@@ -59,7 +59,7 @@ const WorkoutPage = () => {
                                     )}
                                 </div>
                                 <div className="d-flex justify-content-between mt-1 mb-3">
-                                    <p>{moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
+                                    <p>Last completed {moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
                                 </div>
 
                                 {exercise.sets.map((set,i) => (
@@ -72,8 +72,6 @@ const WorkoutPage = () => {
                         ))}
                     </div>
                 </Col>
-       
-                
             </Row>
             )}
 
@@ -96,7 +94,6 @@ const WorkoutPage = () => {
                                 <Button className="action-btn w-100">Go to Started workout</Button>
                             </Link>
                         )}
-
                     </div>
                 </Col>
             </Row>

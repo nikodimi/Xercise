@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap"
-import { useWorkoutStore } from "../store"
+import { useWorkoutStore } from "../zustand/store"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";

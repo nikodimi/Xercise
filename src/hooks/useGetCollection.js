@@ -8,7 +8,6 @@ const useGetCollection = (col, muscleGroup) => {
 
     useEffect(() => {
         const ref = collection(db, `${col}/${muscleGroup}/exercises`);
-        // let queryRef = query(ref, where( 'category', '==', muscleGroup ) )
 
         const unsubscribe = onSnapshot(ref, (snapshot) => {
             const docs = snapshot.docs.map((doc) => {

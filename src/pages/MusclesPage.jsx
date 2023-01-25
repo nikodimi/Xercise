@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
-import { useWorkoutStore } from "../store"
+import { useWorkoutStore } from "../zustand/store"
 import { useState } from 'react'
 import useGetMuscles from '../hooks/useGetMuscles'
 import MuscleBoxMenu from '../components/MuscleBoxMenu'

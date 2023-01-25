@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { useWorkoutStore } from "../store"
+import { useWorkoutStore } from "../zustand/store"
 import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import MuscleMenu from '../components/MuscleMenu'
 import Exercise from "../components/Exercise"
@@ -78,13 +78,11 @@ const MusclePage = () => {
                 
             </Container>
 
- 
-
             {exercises.length >= 1 && (
                 <Container className='button-container'>
                     <Row className="w-100 ">
-                        <Col xs={12}>
-                            <Button className="action-btn text-center w-100" onClick={() => setModalShow(true)}>
+                        <Col xs={12} className="p-0">
+                            <Button className="action-btn text-center w-100 ms-2" onClick={() => setModalShow(true)}>
                                 Go to Workout({exercises.length})
                             </Button>
                         </Col>

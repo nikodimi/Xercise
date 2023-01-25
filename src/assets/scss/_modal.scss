@@ -11,6 +11,8 @@
 
         .modal-body {
             border-bottom-left-radius: none;
+            overflow-y: scroll;
+            padding-bottom: 2rem;
         }
 
     }

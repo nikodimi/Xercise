@@ -51,7 +51,7 @@ const WorkoutsPage = () => {
                                         )}
                                     </div>
                                 ))}
-                                <div className="mt-3 w-100 text-end pe-1">
+                                <div className="mt-3 w-100 text-end pe-2">
                                     <FontAwesomeIcon size="lg" icon={faPenToSquare} onClick={() => setEdit(!edit)} />
                                 </div>
                             </div>

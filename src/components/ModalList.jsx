@@ -1,12 +1,12 @@
 import { Button, Modal, Form } from 'react-bootstrap'
-import { useWorkoutStore } from "../store"
+import { useWorkoutStore } from "../zustand/store"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faMinus } from "@fortawesome/free-solid-svg-icons";
 import { addDoc, collection, serverTimestamp} from 'firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from '../contexts/AuthContext'
 import { useForm } from 'react-hook-form'
-import { useActiveWorkout } from '../ActiveWorkout';
+import { useActiveWorkout } from '../zustand/ActiveWorkout';
 import { Link } from 'react-router-dom'
 import moment from 'moment/moment';
 
@@ -83,30 +83,16 @@ const ModalList = ({ show, onHide }) => {
                             ))}
                         </div>
                     )}
-                    <Button className="action-btn save-btn w-100 mt-5" type="submit">Save Workout</Button>
+                    <Button className="modal-btn save-btn w-100 mt-4" type="submit">Save Workout</Button>
                 </Form>
                 <div className='w-100 mt-3'>
-                    <Button className="action-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
+                    <Button className="modal-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
                 </div>
 
                 <div className='mt-4'>
                     <p className='text-center'>Workout already active</p>
-                    <Button className="action-btn w-100 mt-1" disabled={showButton} onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
+                    <Button className="modal-btn w-100 mt-1" disabled={showButton} onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
                 </div>
-             
-
-                {/* {activeWorkout && (
-                    <>
-                        <div className='mt-3'>
-                            <Button className="action-btn w-100" disabled={activeWorkout} onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
-                        </div>
-                        <div className='d-flex justify-content-evenly mt-2'>
-                            <span>Workout already active</span>
-                            <Link to={'/active'}><span className>-Go to workout-</span></Link> 
-                        </div>
-                    </>
-                )} */}
-                
                 
             </Modal.Body>
         </Modal>

@@ -1,4 +1,3 @@
-// import useGetCollection from "./useGetCollection";
 import useGetDocument from "./useGetDocument";
 
 const useGetExercise = (muscle, id) => {

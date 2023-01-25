@@ -2,7 +2,7 @@ import { Button, Modal, Form} from 'react-bootstrap'
 import { updateDoc, addDoc, doc, collection, Timestamp, serverTimestamp } from '@firebase/firestore'
 import { db } from '../firebase'
 import { useAuthContext } from '../contexts/AuthContext'
-import { useActiveWorkout } from '../ActiveWorkout';
+import { useActiveWorkout } from '../zustand/ActiveWorkout';
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 

@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
-import { useActiveWorkout } from '../ActiveWorkout'
+import { useActiveWorkout } from '../zustand/ActiveWorkout'
 import { useState } from 'react'
 import ModalWorkout from '../components/ModalWorkout'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'

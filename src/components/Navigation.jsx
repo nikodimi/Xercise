@@ -27,7 +27,7 @@ const Navigation = () => {
 	return (
         <Container className='navigation-tabs d-flex flex-column justify-content-center'>
             <Row>
-                <Col sm={12}>
+                <Col sm={12} className="m-auto">
                     <nav className="navbar" role="navigation">
                         <Nav className="w-100">
                             <div className="d-flex flex-row justify-content-around w-100">

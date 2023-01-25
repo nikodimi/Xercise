@@ -11,7 +11,6 @@ const HistoryPage = () => {
     const [value, onChange] = useState(new Date());
     const {data, isLoading} = useGetUserWorkouts(currentUser.uid, "history")
 
-    console.log('data', data)
 
     return (
         <Container className="d-flex align-items-center flex-column">
@@ -20,8 +19,6 @@ const HistoryPage = () => {
                 <Col xs={12}>
                     <div>
                         <Calendar onChange={onChange} value={value} />
-
-                        {/* <TileContent /> */}
                     </div>
                 </Col>
             </Row>

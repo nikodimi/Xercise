@@ -15,7 +15,6 @@ import ActivePage from './pages/ActivePage'
 import HistoryPage from './pages/HistoryPage'
 import './assets/scss/App.scss'
 
-
 const App = () => {
     return (
         <div id="App">

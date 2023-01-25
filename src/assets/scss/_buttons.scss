@@ -1,7 +1,7 @@
 .action-btn {
     background-color: $primary;
     border: 0.25rem solid $secondary;
-    border-radius: 5rem;
+    border-radius: 2rem;
     padding: 0.75rem 0;
     color: $font-color-primary;
 
@@ -9,7 +9,6 @@
         background-color: $primary!important;
         border: 0.25rem solid $secondary!important
     }
-
 }
 
 .btn:disabled,
@@ -19,3 +18,22 @@
     border: 2px solid $secondary;
 }
 
+.scrollbar-btn {
+    max-width: 7rem;
+    margin-left: 1rem;
+    background-color: $primary;
+    border: none;
+}
+
+
+  .btn-primary:active {
+    border-color: $secondary!important;
+    background-color: $secondary!important;
+}
+
+.modal-btn {
+    background-color: $secondary;
+    border:none;
+    padding: 0.75rem 0;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}

@@ -9,7 +9,6 @@
 @import 'buttons';
 @import 'modal';
 @import 'historyPage';
-@import 'activePage';
 @import 'container';
 
 #App {
@@ -17,27 +16,17 @@
     background-color: $primary;
     color: $font-color-primary;
     padding: 0.5rem;
-    // font-family: 'RobotoMono-SemiBold';
-}
 
-// @font-face {
-//     font-family: 'RobotoMono-SemiBold';
-//     src: local('RobotoMono-SemiBold'),
-//       url('../fonts/RobotoMono-SemiBold.ttf') format('truetype');
-//   }
+}
 
 .scrollbar {
     overflow-x: auto;
     flex-wrap: nowrap;
     margin-top: 3rem;
-    
-}
-.scrollbar::-webkit-scrollbar{
-    width: 0;
 }
 
-.loading-container {
-    background-color: $primary;
+.scrollbar::-webkit-scrollbar{
+    width: 0;
 }
 
 .logo {

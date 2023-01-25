@@ -43,7 +43,7 @@ const SignupPage = () => {
 
             await reloadUser()
 
-            navigate('/profile')
+            navigate('/workouts')
         } catch (err) {
             setError(err.message);
             setLoading(false);
