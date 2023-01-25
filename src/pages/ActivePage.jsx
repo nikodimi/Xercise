@@ -15,11 +15,14 @@ const ActivePage = () => {
     const handleSet = (value) => {
         const getLength = newWorkout.exercises[value].sets.length
         const getLastSet = newWorkout.exercises[value].sets[getLength-1]
-        newWorkout.exercises[value].sets.push({
-            weight: getLastSet.weight,
-            repetitions: getLastSet.repetitions
-        })
-        updateWorkout(newWorkout)
+
+        if (getLastSet.repetitions != 0) {
+            newWorkout.exercises[value].sets.push({
+                weight: getLastSet.weight,
+                repetitions: getLastSet.repetitions
+            })
+            updateWorkout(newWorkout)
+        } 
     }
     const updateWeight = (a, b, value) => {
         newWorkout.exercises[a].sets[b].weight = value
