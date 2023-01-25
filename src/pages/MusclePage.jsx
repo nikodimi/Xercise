@@ -6,12 +6,14 @@ import useGetExercisesByMuscle from "../hooks/useGetExercisesByMuscle"
 import MuscleMenu from '../components/MuscleMenu'
 import Exercise from "../components/Exercise"
 import ModalList from '../components/ModalList'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const MusclePage = () => {
     const { id } = useParams()
     const capitalized = id.charAt(0).toUpperCase() + id.slice(1)
     const {data, isLoading} = useGetExercisesByMuscle(capitalized)
-    const { exercises } = useWorkoutStore()
+    const { exercises, addToWorkout, removeFromWorkout } = useWorkoutStore()
     const [modalShow, setModalShow] = useState(false);
     
     const [searchParams, setSearchParams] = useSearchParams({
@@ -23,6 +25,14 @@ const MusclePage = () => {
         setSearchParams({
             muscle_id: value
         })
+    }
+
+    const addExerciseToWorkout = (d) => {
+        addToWorkout(d)
+    }
+
+    const removeExerciseFromWorkout = (d) => {
+        removeFromWorkout(d)
     }
 
     return (
@@ -37,9 +47,27 @@ const MusclePage = () => {
                     <Row>
                         <Col xs={12}>
                             {data.map(exercise => (
-                                <div key={exercise.id} className="exercise-item mt-4">
-                                    <p className="text-uppercase fw-bold text-white" onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
-                                    <p className=''>{capitalized}</p>
+                                <div key={exercise.id} className="exercise-item mt-4 d-flex justify-content-between">
+                                    <div>
+                                        <p className="text-uppercase fw-bold text-white" onClick={() => handleClick(exercise.id)}>{exercise.name}</p>
+                                        <p className=''>{capitalized}</p>
+                                    </div>
+                                    {
+                                        exercises.some(e => e.name === exercise.name) === true ?  (
+                                            <FontAwesomeIcon 
+                                                size="lg" 
+                                                icon={faMinus} 
+                                                onClick={() => removeExerciseFromWorkout(exercise)}
+                                            />
+                                        ) : (
+                                            
+                                            <FontAwesomeIcon 
+                                                size="lg" 
+                                                icon={faPlus} 
+                                                onClick={() => addExerciseToWorkout(exercise)}
+                                        />
+                                        )
+                                    }
                                 </div>
                             ))}
                         </Col>
