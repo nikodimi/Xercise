@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import useGetExercise from "../hooks/useGetExercise"
-import { Link } from 'react-router-dom'
 
 const Exercise = ({ muscle, exercise }) => {
     const { addToWorkout, removeFromWorkout, exercises } = useWorkoutStore()

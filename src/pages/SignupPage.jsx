@@ -43,7 +43,7 @@ const SignupPage = () => {
 
             await reloadUser()
 
-            navigate('/')
+            navigate('/profile')
         } catch (err) {
             setError(err.message);
             setLoading(false);
