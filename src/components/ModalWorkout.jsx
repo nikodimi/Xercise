@@ -43,6 +43,11 @@ const ModalWorkout = ({ show, onHide }) => {
        Navigate('/workouts')
     }
 
+    const closeWorkout = () => {
+        resetActiveWorkout()
+        Navigate('/muscles')
+    }
+
     return (
         <Modal 
             show={show} 
@@ -80,14 +85,18 @@ const ModalWorkout = ({ show, onHide }) => {
                     </Form>
                 )}
                 
+                {activeWorkout.id && (
+                    <div className='w-100 mt-3'>
+                        <Button className="action-btn w-100" onClick={() => finishWorkout(activeWorkout)}>Finish Workout</Button>
+                    </div>
+                )}
 
-                <div className='w-100 mt-3'>
-                    <Button className="action-btn w-100" onClick={() => finishWorkout(activeWorkout)}>Finish Workout</Button>
-                </div>
+                {!activeWorkout.id && (
+                    <div className='d-flex justify-content-center mt-4'>
+                        <Button className="action-btn w-100" onClick={() => closeWorkout()}>Finish Workout</Button>         
+                    </div>
+                )}
 
-                <div className='d-flex justify-content-center mt-4'>
-
-                </div>
                 
             </Modal.Body>
         </Modal>

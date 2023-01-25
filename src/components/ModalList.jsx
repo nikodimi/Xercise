@@ -89,8 +89,11 @@ const ModalList = ({ show, onHide }) => {
                     <Button className="modal-btn w-100"  onClick={() => resetWorkout()}>Delete Workout</Button>
                 </div>
 
+                               
                 <div className='mt-4'>
-                    <p className='text-center'>Workout already active</p>
+                    {showButton && (
+                        <p className='text-center'>Workout already active</p>
+                    )}
                     <Button className="modal-btn w-100 mt-1" disabled={showButton} onClick={() => createEmptyWorkout()}><Link to={`/active`}>Start Workout</Link></Button>
                 </div>
                 
