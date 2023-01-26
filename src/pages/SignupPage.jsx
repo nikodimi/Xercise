@@ -63,7 +63,7 @@ const SignupPage = () => {
                             <Form.Group className='d-flex align-items-center form-group'>
                                 <Form.Control type="text" placeholder="Username" ref={displayNameRef} required />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faUser}
                                     className="form-icon" 
                                 />
@@ -72,7 +72,7 @@ const SignupPage = () => {
                             <Form.Group className='d-flex align-items-center form-group mt-3'>
                                 <Form.Control type="email" placeholder="Email" ref={emailRef} required />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faEnvelope}
                                     className="form-icon" 
                                 />
@@ -90,7 +90,7 @@ const SignupPage = () => {
                             <Form.Group className='d-flex align-items-center form-group mt-3'>
                                 <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faLock}
                                     className="form-icon" 
                                 />
@@ -104,7 +104,7 @@ const SignupPage = () => {
                                     required
                                 />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faLock}
                                     className="form-icon" 
                                 />

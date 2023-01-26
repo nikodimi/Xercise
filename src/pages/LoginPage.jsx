@@ -39,7 +39,7 @@ const LoginPage = () => {
                             <Form.Group className='d-flex align-items-center form-group'>
                                 <Form.Control type="email" placeholder="Email" ref={emailRef} required />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faUser}
                                     className="form-icon" 
                                 />
@@ -48,7 +48,7 @@ const LoginPage = () => {
                             <Form.Group className='d-flex align-items-center mt-3 form-group'>
                                 <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                                 <FontAwesomeIcon 
-                                    size="md" 
+                                    size="lg" 
                                     icon={faLock}
                                     className="form-icon" 
                                 />
