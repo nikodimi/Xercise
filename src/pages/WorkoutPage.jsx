@@ -59,7 +59,9 @@ const WorkoutPage = () => {
                                     )}
                                 </div>
                                 <div className="d-flex justify-content-between mt-1 mb-3">
-                                    <p>Last completed {moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
+                                    {data.premade === false && (
+                                        <p>Last completed {moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
+                                    )}
                                 </div>
 
                                 {exercise.sets.map((set,i) => (
