@@ -12,7 +12,8 @@ const ModalWorkout = ({ show, onHide }) => {
     const { register, handleSubmit, formState: { errors }} = useForm()
     const Navigate = useNavigate()
 
-    const finishWorkout = async() => {
+    const updateWorkout = async() => {
+        console.log('Finish som uppdaterar redan befintliga')
         await updateDoc(doc(db, `users/${currentUser.uid}/workouts` , activeWorkout.id), {
             title: activeWorkout.title,
             time: "",
@@ -29,7 +30,7 @@ const ModalWorkout = ({ show, onHide }) => {
     }
 
     const saveWorkout = async(data) => {
-        console.log('data', data)
+        console.log('Save som lägger till workout')
         await addDoc(collection(db, `users/${currentUser.uid}/workouts`), {
             title: data.title,
             exercises: activeWorkout.exercises,
@@ -44,6 +45,7 @@ const ModalWorkout = ({ show, onHide }) => {
     }
 
     const closeWorkout = () => {
+        console.log('Closes som bara stänger ner')
         resetActiveWorkout()
         Navigate('/muscles')
     }
@@ -62,7 +64,30 @@ const ModalWorkout = ({ show, onHide }) => {
             
             <Modal.Body>
 
-                {activeWorkout.premade === true || activeWorkout.title =="Empty Workout" && (
+                {activeWorkout.premade === true  && (
+                    <Form onSubmit={handleSubmit(saveWorkout)}>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Control
+                                {...register("title", {
+                                    required: "Please enter a title",
+                                    minLength: {
+                                        value: 2,
+                                        message: "A little longer plz"
+                                    }
+                                })}
+                                placeholder="Enter a Title "
+                                type="text"
+                            />
+                            {errors.title && <div>{errors.title.message}</div>}
+                        </Form.Group>
+
+                        <div className='w-100 mt-3'>
+                            <Button className="action-btn w-100" type="submit">Save Workout</Button>
+                        </div>
+                    </Form>
+                )}
+
+                {activeWorkout.title === "Empty Workout" && (
                     <Form onSubmit={handleSubmit(saveWorkout)}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
@@ -85,18 +110,15 @@ const ModalWorkout = ({ show, onHide }) => {
                     </Form>
                 )}
                 
-                {activeWorkout.id && (
+                {activeWorkout.id && activeWorkout.premade === false && (
                     <div className='w-100 mt-3'>
-                        <Button className="action-btn w-100" onClick={() => finishWorkout(activeWorkout)}>Finish Workout</Button>
+                        <Button className="action-btn w-100" onClick={() => updateWorkout(activeWorkout)}>Finish and save</Button>
                     </div>
                 )}
-
-                {!activeWorkout.id && (
-                    <div className='d-flex justify-content-center mt-4'>
-                        <Button className="action-btn w-100" onClick={() => closeWorkout()}>Finish Workout</Button>         
-                    </div>
-                )}
-
+                
+                <div className='d-flex justify-content-center mt-4'>
+                    <Button className="action-btn w-100" onClick={() => closeWorkout()}>Close Workout</Button>         
+                </div>
                 
             </Modal.Body>
         </Modal>
