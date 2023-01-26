@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import Navigation from './components/Navigation'
 import RequireAuth from './components/RequireAuth'
@@ -13,16 +13,34 @@ import MusclesPage from './pages/MusclesPage'
 import MusclePage from './pages/MusclePage'
 import ActivePage from './pages/ActivePage'
 import HistoryPage from './pages/HistoryPage'
+import { useAuthContext } from './contexts/AuthContext'
 import './assets/scss/App.scss'
 
 const App = () => {
+    const { currentUser } = useAuthContext()
+
     return (
         <div id="App">
 
             <Routes>
-                <Route path="/" element={<StartPage />} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                {!currentUser ?  (
+                    <Route path="/" element={<StartPage />} />
+                    ) : (
+                    <Route path="/" element={<Navigate to="/workouts" />} />
+                    )
+                }  
+                {!currentUser ?  (
+                    <Route path="/login" element={<LoginPage />} />
+                    ) : (
+                    <Route path="/login" element={<Navigate to="/workouts" />} />
+                    )
+                }    
+                {!currentUser ?  (
+                    <Route path="/signup" element={<SignupPage />} />
+                    ) : (
+                    <Route path="/signup" element={<Navigate to="/workouts" />} />
+                    )
+                }         
                 <Route path="/logout" element={<LogoutPage />} />
                 <Route path="/workouts" element={
                     <RequireAuth>
