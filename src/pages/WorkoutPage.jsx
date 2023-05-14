@@ -59,7 +59,7 @@ const WorkoutPage = () => {
                                     )}
                                 </div>
                                 <div className="d-flex justify-content-between mt-1 mb-3">
-                                    {data.premade === false && (
+                                    {data.premade === false && data.completed.length > 0 && (
                                         <p>Last completed {moment(data.completed[0]?.toMillis()).format('YYYY-MM-DD')}</p>
                                     )}
                                 </div>

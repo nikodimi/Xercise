@@ -43,3 +43,16 @@ input[type=file]::-webkit-file-upload-button {
 .login-link {
     color: red;
 }
+
+input::file-selector-button {
+    background-image: linear-gradient(
+      to right,
+      #1e1e30,
+      #1e1e30,
+    );
+
+  }
+  input::file-selector-button:hover {
+    background-position-x: 100%;
+    transform: scale(1.1);
+  }

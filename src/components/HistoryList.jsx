@@ -19,7 +19,7 @@ const HistoryList = ({ data }) => {
                         <div className='mt-2'>
                             {workout.exercises.map((exercise,i) => (
                                 <div key={i} className="d-flex">
-                                    <p>{exercise.sets.length} x</p>
+                                    <p>{exercise.sets.length-1} x</p>
                                     <p className='ps-1'>{exercise.name}</p>
                                 </div>
                             ))}

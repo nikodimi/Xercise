@@ -123,7 +123,7 @@ const ActivePage = () => {
                                     <Row className='mt-3'>
                                         <Col xs={12}className=''>
                                             <div className='text-center'>
-                                                <p className="text-uppercase fw-bold" onClick={() => handleSet(i)}>Add set+</p>
+                                                <button className="scrollbar-btn text-white text-uppercase fw-bold" onClick={() => handleSet(i)}>Add set+</button>
                                             </div>
                                         </Col>
                                     </Row>
